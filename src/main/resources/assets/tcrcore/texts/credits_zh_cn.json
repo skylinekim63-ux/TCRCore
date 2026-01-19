@@ -1,20 +1,9 @@
 [
   {
-    "section": "制作团队",
+    "section": "制作团队（以下均指原创内容）",
     "disciplines": [
       {
         "discipline": "作者",
-        "titles": [
-          {
-            "title": "",
-            "names": [
-              "P1nero"
-            ]
-          }
-        ]
-      },
-      {
-        "discipline": "策划",
         "titles": [
           {
             "title": "",
@@ -36,28 +25,6 @@
         ]
       },
       {
-        "discipline": "任务书、图鉴、引导 制作",
-        "titles": [
-          {
-            "title": "",
-            "names": [
-              "P1nero"
-            ]
-          }
-        ]
-      },
-      {
-        "discipline": "对话设计",
-        "titles": [
-          {
-            "title": "",
-            "names": [
-              "P1nero"
-            ]
-          }
-        ]
-      },
-      {
         "discipline": "剧情设计",
         "titles": [
           {
@@ -69,60 +36,91 @@
         ]
       },
       {
-        "discipline": "美术总监",
+        "discipline": "任务书、图鉴",
         "titles": [
           {
             "title": "",
             "names": [
-              "P1nero"
+              "P1nero",
+              "KamiKaguya"
             ]
           }
         ]
       },
       {
-        "discipline": "背景设定",
+        "discipline": "美术",
         "titles": [
           {
-            "title": "",
+            "title": "建模",
             "names": [
-              "P1nero"
+              "Ao22333",
+              "XVIII-凌"
+            ]
+          },
+          {
+            "title": "材质贴图",
+            "names": [
+              "一只路过的小吴",
+              "XVIII-凌",
+              "yu_moooo",
+              "脚踏梯子hill"
+            ]
+          },
+          {
+            "title": "权重绘制",
+            "names": [
+              "asanginxst"
+            ]
+          },
+          {
+            "title": "封面设计",
+            "names": [
+              "v4lk"
             ]
           }
         ]
       },
       {
-        "discipline": "外援",
+        "discipline": "Boss AI设计",
         "titles": [
           {
-            "title": "主城",
+            "title": "",
             "names": [
-              "El_mal（玩建筑的牢E）"
-            ]
-          },
-          {
-            "title": "部分动画",
-            "names": [
-              "merlin204"
-            ]
-          },
-          {
-            "title": "部分贴图",
-            "names": [
-              "一只路过的小吴 部分物品",
-              "XVIII-凌 部分刀光",
-              "Ao 部分技能，npc",
-              "脚踏梯子hill 刀光"
-            ]
-          },
-          {
-            "title": "地形",
-            "names": [
-              "wonderful艾晨"
+              "ShelMarow",
+              "XVIII-凌"
             ]
           }
-        ,
+        ]
+      },
+      {
+        "discipline": "主城场景制作",
+        "titles": [
           {
-            "title": "服务端制作",
+            "title": "",
+            "names": [
+              "El_mal（玩建筑的牢E）",
+              "300wan"
+            ]
+          }
+        ]
+      },
+      {
+        "discipline": "动画协助",
+        "titles": [
+          {
+            "title": "",
+            "names": [
+              "merlin204",
+              "asanginxst"
+            ]
+          }
+        ]
+      },
+      {
+        "discipline": "服务端制作",
+        "titles": [
+          {
+            "title": "",
             "names": [
               "KamiKaguya"
             ]
@@ -130,16 +128,10 @@
         ]
       },
       {
-        "discipline": "设备支持",
+        "discipline": "宣传片协助拍摄",
         "titles": [
           {
-            "title": "测试服务器赞助",
-            "names": [
-              "白露（NHBlock）"
-            ]
-          },
-          {
-            "title": "协助拍摄",
+            "title": "",
             "names": [
               "Arcadia"
             ]
@@ -149,22 +141,15 @@
     ]
   },
   {
-    "section": "内测贡献",
+    "section": "Apex Hosting",
     "disciplines": [
       {
-        "discipline": "排名不分先后",
+        "discipline": "Rent your server!",
         "titles": [
           {
-            "title": "",
+            "title": "Use the link to get a discount!",
             "names": [
-              "T_muse_Y",
-              "HuaSheng_peanuts",
-              "merlin204",
-              "ShelMarow",
-              "Arcadia",
-              "霖",
-              "32spark",
-              "脚踏梯子hill"
+              "https://apexhost.gg/P1nero"
             ]
           }
         ]
@@ -197,7 +182,7 @@
           {
             "title": "I18n（其他语言的译者可以在此处加上你的名字）",
             "names": [
-              "zh_cn, en_us - P1nero"
+              "zh_cn, en_us - P1nero, KamiKaguya"
             ]
           },
           {

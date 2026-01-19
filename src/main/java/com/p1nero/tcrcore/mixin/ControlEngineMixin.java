@@ -12,14 +12,14 @@ import yesman.epicfight.client.events.engine.ControlEngine;
 import yesman.epicfight.client.input.EpicFightKeyMappings;
 
 /**
- * 临时修原版挖掘模式无法交互
+ * 禁止武器在原版模式下攻击
  */
 @Mixin(ControlEngine.Events.class)
 public class ControlEngineMixin {
 
     @Inject(method = "interactionEvent", at = @At("RETURN"), remap = false)
     private static void tcr$interactionEvent(InputEvent.InteractionKeyMappingTriggered event, CallbackInfo ci) {
-        if(event.isCanceled()) {
+        if(event.isCanceled() && !TCRCoreMod.isWorldEditLoad()) {
             Minecraft.getInstance().player.displayClientMessage(TCRCoreMod.getInfo("weapon_no_interact", EpicFightKeyMappings.SWITCH_MODE.getTranslatedKeyMessage()).withStyle(ChatFormatting.GOLD), true);
         }
     }

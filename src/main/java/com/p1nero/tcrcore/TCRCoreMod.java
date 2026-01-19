@@ -1,6 +1,5 @@
 package com.p1nero.tcrcore;
 
-//import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.github.L_Ender.cataclysm.init.ModEntities;
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.hm.efn.registries.EFNItem;
@@ -51,6 +50,7 @@ public class TCRCoreMod {
     public static final String MOD_ID = "tcrcore";
     public static final Logger LOGGER = LogUtils.getLogger();
     private static boolean isCheatMod = false;
+    private static boolean isWorldEditLoad;
 
     public TCRCoreMod(FMLJavaModLoadingContext context) {
         SkillSlot.ENUM_MANAGER.registerEnumCls(TCRCoreMod.MOD_ID, TCRSkillSlots.class);
@@ -76,6 +76,7 @@ public class TCRCoreMod {
 //                isCheatMod = true;
 //            }
 //        });
+        isWorldEditLoad = ModList.get().isLoaded("worldedit");
 
         PlayerEventListeners.illegalItems.add(UAItems.STARVED_WOLF_SKULL.get());
         PlayerEventListeners.illegalItems.add(artifacts.registry.ModItems.VAMPIRIC_GLOVE.get());
@@ -136,6 +137,10 @@ public class TCRCoreMod {
             event.addRepositorySource((packConsumer) -> packConsumer.accept(pack));
 
         }
+    }
+
+    public static boolean isWorldEditLoad() {
+        return isWorldEditLoad;
     }
 
     public static MutableComponent getInfo(String key) {

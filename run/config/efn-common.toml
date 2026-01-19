@@ -29,16 +29,6 @@
 	#Range: 1 ~ 1200
 	yamatoParryStunCooldown = 60
 
-[animation]
-	#Entities that won't play Yamato's stun animations (format: modid:entity_id)
-	#This is a SERVER-SIDE setting
-	#Example: ["minecraft:wither", "minecraft:ender_dragon"]
-	animationBlacklist = ["minecraft:wither", "minecraft:ender_dragon"]
-	#Entities that can play Yamato's stun animations (format: modid:entity_id)
-	#This is a SERVER-SIDE setting
-	#Example: ["minecraft:player", "minecraft:zombie", "minecraft:skeleton"]
-	animationWhitelist = ["wom:evil_skeleton", "wom:hollow", "wom:saulomonk", "wom:lycanth"]
-
 [yamato_reward]
 	#Enable/disable the skill book reward for Yamato JudgementCut-End
 	#When enabled, players will receive JudgementCut-End skill book after reaching the kill threshold
@@ -92,7 +82,7 @@
 	#End time of slowdown effect (in ticks)
 	#20 ticks = 1 second. When the time slowdown end
 	#This is a SERVER-SIDE setting
-	#Default: 6 ticks
+	#Default: 7 ticks
 	#Range: 1 ~ 100
 	DualswordDodgeTimeSlowDuration = 7
 	#Strength level of time slowdown effect
@@ -127,4 +117,30 @@
 	#Default: 0.4 (40%)
 	#Range: 0.01 ~ 1.0
 	judgementCutEndHealthPercentage = 0.4
+
+[animation_yamato]
+	#Entities that won't play Yamato's stun animations (format: modid:entity_id)
+	#This is a SERVER-SIDE setting
+	#Example: ["minecraft:wither", "minecraft:ender_dragon"]
+	animationBlacklist = ["minecraft:wither", "minecraft:ender_dragon"]
+	#Entities that can play Yamato's stun animations (format: modid:entity_id)
+	#This is a SERVER-SIDE setting
+	#Example: ["minecraft:player", "minecraft:zombie", "minecraft:skeleton"]
+	animationWhitelist = ["wom:evil_skeleton", "wom:hollow", "wom:saulomonk", "wom:lycanth"]
+
+[animation_murasama]
+	#Entities that won't play Murasama's stun animations (format: modid:entity_id)
+	#This is a SERVER-SIDE setting
+	#Example: ["minecraft:wither", "minecraft:ender_dragon"]
+	animationBlacklist = ["minecraft:wither", "minecraft:ender_dragon"]
+	#Entities that can play Murasama's stun animations (format: modid:entity_id)
+	#This is a SERVER-SIDE setting
+	#Example: ["minecraft:player", "minecraft:zombie", "minecraft:skeleton"]
+	animationWhitelist = ["wom:evil_skeleton", "wom:hollow", "wom:saulomonk", "wom:lycanth"]
+
+[murasama]
+	#Enable/disable the compatmode for Murasama's double tap Sprint conditon
+	#When enabled, Murasama's double tap Sprint conditon will always be true(not require to double tap Sprint
+	#Default: false (disabled)
+	murasamaDoubleTapSprintConditoCompat = false
 

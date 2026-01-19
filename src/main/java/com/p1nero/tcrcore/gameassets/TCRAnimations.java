@@ -1,5 +1,8 @@
 package com.p1nero.tcrcore.gameassets;
+import com.hm.efn.client.sound.EFNSounds;
+import com.hm.efn.entity.EFNVFXManagers;
 import com.p1nero.tcrcore.TCRCoreMod;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.player.Player;
@@ -7,18 +10,23 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.AnimationManager;
+import yesman.epicfight.api.animation.Joint;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.property.MoveCoordFunctions;
 import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.api.animation.types.DodgeAnimation;
 import yesman.epicfight.api.animation.types.EntityState;
+import yesman.epicfight.api.collider.MultiOBBCollider;
+import yesman.epicfight.api.collider.OBBCollider;
 import yesman.epicfight.api.utils.AttackResult;
 import yesman.epicfight.api.utils.TimePairList;
 import yesman.epicfight.api.utils.math.ValueModifier;
+import yesman.epicfight.api.utils.math.Vec3f;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.gameasset.ColliderPreset;
+import yesman.epicfight.model.armature.HumanoidArmature;
 import yesman.epicfight.particle.EpicFightParticles;
 @Mod.EventBusSubscriber(modid = TCRCoreMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class TCRAnimations {
@@ -27,6 +35,7 @@ public class TCRAnimations {
     public static AnimationManager.AnimationAccessor<DodgeAnimation> STEP_L;
     public static AnimationManager.AnimationAccessor<DodgeAnimation> STEP_R;
     public static AnimationManager.AnimationAccessor<AttackAnimation> TSUNAMI;
+    public static AnimationManager.AnimationAccessor<AttackAnimation> SCYTHE_HARVEST;
 
     @SubscribeEvent
     public static void registerAnimations(AnimationManager.AnimationRegistryEvent event) {
@@ -97,7 +106,12 @@ public class TCRAnimations {
                                     entitypatch.playSound(SoundEvents.TRIDENT_RIPTIDE_3, 0.0F, 0.0F), AnimationEvent.Side.CLIENT),
                                     AnimationEvent.InTimeEvent.create(0.35F, (entitypatch, animation, params) ->
                                             entitypatch.setAirborneState(true), AnimationEvent.Side.SERVER)}));
+            AnimationProperty.PlaybackSpeedModifier SKILL = (self, entityPatch, speed, prevElapsedTime, elapsedTime) -> 1.0F;
 
+            MultiOBBCollider SCYTHE_COLLIDER = new MultiOBBCollider(new OBBCollider(0.25F, 0.25F, 1.3, 0.0F, 0.0F, 1.0F), new OBBCollider(0.25F, 0.25F, 1.3, 0.0F, 0.0F, 1.0F), new OBBCollider(0.7, 0.9, 0.7, 0.0F, -0.5F, -0.45), new OBBCollider(0.7, 0.9, 0.7, 0.0F, -0.5F, -0.45));
+
+            Joint mainHand = Armatures.BIPED.get().toolR;
+            SCYTHE_HARVEST = builder.nextAccessor("biped/scythe/skill/scythe_harvest", (accessor) -> (new AttackAnimation(0.1F, accessor, Armatures.BIPED, (new AttackAnimation.Phase(0.0F, 0.66F, 0.81F, 0.81F, 0.81F, mainHand, SCYTHE_COLLIDER)).addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, (SoundEvent) EFNSounds.WHOOSH_HEAVY_4.get()), (new AttackAnimation.Phase(0.81F, 0.81F, 1.0F, 1.0F, 1.0F, mainHand, SCYTHE_COLLIDER)).addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, (SoundEvent)EFNSounds.WHOOSH_HEAVY_4.get()), (new AttackAnimation.Phase(1.0F, 1.05F, 1.21F, 2.13F, 2.13F, mainHand, SCYTHE_COLLIDER)).addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EFNSounds.WHOOSH_HEAVY_2.get()))).addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, SKILL).newTimePair(0.0F, 1.63F).addStateRemoveOld(EntityState.CAN_BASIC_ATTACK, false).newTimePair(0.0F, 1.83F).addStateRemoveOld(EntityState.CAN_SKILL_EXECUTION, false).addEvents(new AnimationEvent[]{EFNVFXManagers.summonScytheComboVFX(EFNVFXManagers.CRIMSON_SLASH, 25, 0.5F, -0.5F, 0.0F, 4.0F, new Vec3f(0.0F, 0.0F, 17.0F)), EFNVFXManagers.summonScytheComboVFX(EFNVFXManagers.CRIMSON_SLASH, 35, 0.5F, -0.5F, 0.0F, 4.0F, new Vec3f(0.0F, 0.0F, -17.0F))}));
         });
     }
 }

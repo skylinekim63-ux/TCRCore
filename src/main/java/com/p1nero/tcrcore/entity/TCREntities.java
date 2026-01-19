@@ -22,6 +22,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.shelmarow.tcr_bosses.gameassets.TCRArmatures;
 import yesman.epicfight.api.forgeevent.EntityPatchRegistryEvent;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.world.capabilities.entitypatch.mob.IronGolemPatch;
@@ -39,23 +40,23 @@ public class TCREntities {
     public static final RegistryObject<EntityType<GirlEntity>> GIRL = register("girl",
             EntityType.Builder.of(GirlEntity::new, MobCategory.CREATURE).sized(0.6f, 1.9f).fireImmune());
 
-    public static final RegistryObject<EntityType<AineIrisEntity>> AINE_IRIS = register("aine_iris",
+    public static final RegistryObject<EntityType<AineIrisEntity>> AINE_IRIS = register("aine",
             EntityType.Builder.of(AineIrisEntity::new, MobCategory.CREATURE).sized(0.6f, 1.9f).fireImmune());
 
     public static final RegistryObject<EntityType<TutorialGolem>> TUTORIAL_GOLEM = register("tutorial_golem",
             EntityType.Builder.of(TutorialGolem::new, MobCategory.CREATURE).sized(1.4F, 2.7f).fireImmune());
 
     public static final RegistryObject<EntityType<CloiaEntity>> CLOIA = register("cloia",
-            EntityType.Builder.of(CloiaEntity::new, MobCategory.MONSTER).sized(0.6f, 1.8f));
+            EntityType.Builder.of(CloiaEntity::new, MobCategory.MONSTER).sized(0.6f * 1.4F, 1.8f * 1.4f));
 
     public static final RegistryObject<EntityType<IgnisEntity>> IGNIS = register("ignis",
-            EntityType.Builder.of(IgnisEntity::new, MobCategory.MONSTER).sized(0.6f, 1.8f));
+            EntityType.Builder.of(IgnisEntity::new, MobCategory.MONSTER).sized(0.6f * 1.6F, 1.8f * 1.6f));
 
     public static final RegistryObject<EntityType<NethermalEntity>> NETHERMEL = register("nethermel",
-            EntityType.Builder.of(NethermalEntity::new, MobCategory.MONSTER).sized(0.6f, 1.8f));
+            EntityType.Builder.of(NethermalEntity::new, MobCategory.MONSTER).sized(0.6f * 2, 1.8f * 2));
 
     public static final RegistryObject<EntityType<ScyllaEntity>> SCYLLA = register("scylla",
-            EntityType.Builder.of(ScyllaEntity::new, MobCategory.MONSTER).sized(0.6f, 1.8f));
+            EntityType.Builder.of(ScyllaEntity::new, MobCategory.MONSTER).sized(0.6f * 1.2F, 1.8f * 1.2F));
 
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> entityTypeBuilder) {
         return REGISTRY.register(name, () -> entityTypeBuilder.build(ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, name).toString()));
@@ -83,7 +84,10 @@ public class TCREntities {
 
     @SubscribeEvent
     public static void setArmature(FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> Armatures.registerEntityTypeArmature(TUTORIAL_GOLEM.get(), Armatures.IRON_GOLEM));
+        event.enqueueWork(() -> {
+            Armatures.registerEntityTypeArmature(TUTORIAL_GOLEM.get(), Armatures.IRON_GOLEM);
+            Armatures.registerEntityTypeArmature(IGNIS.get(), TCRArmatures.YAN_MO);
+        });
     }
 
 }

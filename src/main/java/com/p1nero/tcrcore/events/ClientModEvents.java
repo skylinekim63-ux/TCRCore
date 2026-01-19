@@ -1,5 +1,6 @@
 package com.p1nero.tcrcore.events;
 
+import com.brass_amber.ba_bt.init.BTEntityType;
 import com.github.L_Ender.cataclysm.init.ModEntities;
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.hm.efn.registries.EFNItem;
@@ -30,7 +31,10 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.shelmarow.tcr_bosses.gameassets.TCRMeshes;
 import yesman.epicfight.api.client.forgeevent.PatchedRenderersEvent;
+import yesman.epicfight.api.client.model.Meshes;
+import yesman.epicfight.client.renderer.patched.entity.PHumanoidRenderer;
 import yesman.epicfight.client.renderer.patched.entity.PIronGolemRenderer;
 
 @Mod.EventBusSubscriber(modid = TCRCoreMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -77,11 +81,15 @@ public class ClientModEvents {
                 TCRCoreMod.getInfo("altar_dim_info"),
                 TCRCoreMod.getInfo("related_loot", "???", "???"));
     }
+
     @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
     public static void onRenderPatched(PatchedRenderersEvent.Add event) {
         EntityRendererProvider.Context context = event.getContext();
         event.addPatchedEntityRenderer(TCREntities.TUTORIAL_GOLEM.get(), (entityType) -> new PIronGolemRenderer(context, entityType).initLayerLast(context, entityType));
+
+        event.addPatchedEntityRenderer(TCREntities.IGNIS.get(),
+                entityType -> new PHumanoidRenderer<>(TCRMeshes.YAN_MO, event.getContext(), entityType)
+                        .initLayerLast(event.getContext(), entityType));
     }
 
     @SubscribeEvent

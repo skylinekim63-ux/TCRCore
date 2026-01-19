@@ -16,7 +16,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 @OnlyIn(Dist.CLIENT)
 public class AineIrisRenderer extends GeoEntityRenderer<AineIrisEntity> {
     public AineIrisRenderer(EntityRendererProvider.Context context) {
-        super(context, new DefaultedEntityGeoModel<>(ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "aine_iris")) {
+        super(context, new DefaultedEntityGeoModel<>(ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "aine")) {
             @Override
             public void setCustomAnimations(AineIrisEntity animatable, long instanceId, AnimationState<AineIrisEntity> animationState) {
                 CoreGeoBone head = getAnimationProcessor().getBone("Head");

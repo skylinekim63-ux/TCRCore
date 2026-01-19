@@ -23,7 +23,6 @@ import com.p1nero.tcrcore.utils.WorldUtil;
 import com.p1nero.tcrcore.worldgen.TCRDimensions;
 import com.p1nero.tudigong.entity.XianQiEntity;
 import com.p1nero.tudigong.item.TDGItems;
-import com.yesman.epicskills.EpicSkills;
 import com.yesman.epicskills.registry.entry.EpicSkillsItems;
 import com.yesman.epicskills.registry.entry.EpicSkillsSkillTrees;
 import com.yesman.epicskills.skilltree.SkillTree;
@@ -31,7 +30,6 @@ import com.yesman.epicskills.world.capability.SkillTreeProgression;
 import net.blay09.mods.waystones.block.ModBlocks;
 import net.genzyuro.uniqueaccessories.registry.UAItems;
 import net.minecraft.ChatFormatting;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.protocol.game.ClientboundSoundPacket;
@@ -82,7 +80,6 @@ import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -493,6 +490,7 @@ public class PlayerEventListeners {
 
     /**
      * 捡起物品后才视为成功获取，才爆特效，而非用击杀判定
+     * //FIXME 背包拾取升级不兼容
      * {@link LivingEntityEventListeners#onLivingDeath(LivingDeathEvent)}
      */
     @SubscribeEvent

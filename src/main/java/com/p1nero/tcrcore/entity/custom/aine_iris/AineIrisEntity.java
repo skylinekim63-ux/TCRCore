@@ -29,7 +29,7 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class AineIrisEntity extends PathfinderMob implements IEntityNpc, GeoEntity, Merchant {
-    protected static final RawAnimation IDLE = RawAnimation.begin().thenLoop("extra8");
+    protected static final RawAnimation IDLE = RawAnimation.begin().thenLoop("idle");
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     @Nullable
