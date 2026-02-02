@@ -18,9 +18,13 @@ public class CursedAltarBlockEntity extends AbstractAltarBlockEntity {
     }
 
     @Override
-    protected void onActive(Player pPlayer, ItemStack mainHandItem, ServerLevel pLevel, BlockPos pPos) {
-        super.onActive(pPlayer, mainHandItem, pLevel, pPos);
-        TCRMainLevelSaveData.get(pLevel).setCursedFinish(true);
+    public void setActivated(Player player, boolean activated) {
+        PlayerDataManager.cursedEyeActivated.put(player, activated);
+    }
+
+    @Override
+    public boolean isActivated(Player player) {
+        return PlayerDataManager.cursedEyeActivated.get(player);
     }
 
     @Override

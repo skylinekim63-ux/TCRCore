@@ -2,11 +2,11 @@ package com.p1nero.tcrcore.datagen.lang;
 
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.hm.efn.registries.EFNItem;
+import com.p1nero.tcr_bosses.entity.TCRBossEntities;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.block.TCRBlocks;
-import com.p1nero.tcrcore.capability.TCRQuestManager;
 import com.p1nero.tcrcore.client.KeyMappings;
-import com.p1nero.tcrcore.client.gui.BanPortalScreenHandler;
+import com.p1nero.tcrcore.client.gui.dialog.BanPortalScreenHandler;
 import com.p1nero.tcrcore.effect.TCREffects;
 import com.p1nero.tcrcore.entity.TCREntities;
 import com.p1nero.tcrcore.item.TCRItems;
@@ -64,6 +64,8 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addSkill("fire_avoid", "Fire Avoidance Charm", "Immunity to fire damage!");
         this.addSkill("perfect_dodge", "Dodge Effect", "Play a cool animation when perfect dodge!");
 
+        this.add(TCRItems.CORE_FLINT.get(), "Core Flint");
+        this.addItemUsageInfo(TCRItems.CORE_FLINT.get(), "Use on an Obsidian Frame to open a Nether Portal.");
         this.add(TCRItems.PROOF_OF_ADVENTURE.get(), "Proof of Adventure");
         this.addItemUsageInfo(TCRItems.PROOF_OF_ADVENTURE.get(), "Forged from the names of all foes vanquished by your blade. Your journey has reached its end, and your courage is now legend.");
         this.add(TCRItems.DUAL_BOKKEN.get(), "Bokeen");
@@ -80,6 +82,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "It bears an ancient oracle hinting at the locations of scattered embers. Show it to the The Sanctuary Keeper in the The Sanctuary; it might aid your adventure!");
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "§cIn multiplayer mode, do not occupy other players'! Everyone must submit their own!", 2);
 
+        this.addInfo("please_use_custom_flint_and_steel", "Please use [%s] to spawn portal");
         this.addInfo("exit_quest_screen", "OK");
         this.addInfo("no_quest", "No Quest");
         this.addInfo("tracking_quest", " [☆Tracking]");
@@ -210,10 +213,16 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.add(TCREntities.GUIDER.get(), "The Sanctuary Keeper");
         this.add(TCREntities.GIRL.get(), "Ferry girl");
         this.add(TCREntities.TUTORIAL_GOLEM.get(), "Training Golem");
-        this.add(TCREntities.CLOIA.get(), "Cloia the Oathbinder");
-        this.add(TCREntities.NETHERMEL.get(), "Nethermel the Cinderforge");
-        this.add(TCREntities.IGNIS.get(), "Ignis the Heartburner");
-        this.add(TCREntities.SCYLLA.get(), " Scylla the Vortex Weaver");
+        //TODO 补名字
+        this.add(TCRBossEntities.LEVIATHAN_HUMANOID.get(), "");
+        this.add(TCRBossEntities.HARBINGER_HUMANOID.get(), "");
+        this.add(TCRBossEntities.ENDER_GUARDIAN_HUMANOID.get(), "");
+        this.add(TCRBossEntities.IGNIS_HUMANOID.get(), "");
+        this.add(TCRBossEntities.IGNIS_SHIELD.get(), "");
+        this.add(TCRBossEntities.SCYLLA_HUMANOID.get(), "");
+        this.add(TCRBossEntities.ANCIENT_REMNANT_HUMANOID.get(), "");
+        this.add(TCRBossEntities.MALEDICTUS_HUMANOID.get(), "");
+        this.add(TCRBossEntities.NETHERITE_HUMANOID.get(), "");
 
         BanPortalScreenHandler.onGenerateEN(this);
 

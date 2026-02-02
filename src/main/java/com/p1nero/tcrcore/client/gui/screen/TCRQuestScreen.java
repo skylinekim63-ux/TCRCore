@@ -27,7 +27,7 @@ public class TCRQuestScreen extends Screen {
 
     public static final ResourceLocation TASK_ICON = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/task_icon.png");
 
-    private static final int LIST_WIDTH = 340;
+    private static final int LIST_WIDTH = 220;
     private static final int LIST_MARGIN_VERTICAL = 24;
     private static final int ENTRY_PADDING = 4;
     private static final int ICON_SIZE = 20;
@@ -37,6 +37,11 @@ public class TCRQuestScreen extends Screen {
     private int listX1;
     private int listY0;
     private int listY1;
+
+    private int detailX0;
+    private int detailX1;
+    private int detailY0;
+    private int detailY1;
 
     private double scrollAmount;
     private boolean scrolling;
@@ -56,15 +61,30 @@ public class TCRQuestScreen extends Screen {
     protected void init() {
         super.init();
         refreshSelectedQuest();
-        int listWidth = LIST_WIDTH;
         int listHeight = this.height - LIST_MARGIN_VERTICAL - BOTTOM_AREA_HEIGHT;
         if (listHeight < 40) {
             listHeight = 40;
         }
-        listX0 = (this.width - listWidth) / 2;
+        int margin = 40;
+        int gap = 12;
+        int targetPanelWidth = 520;
+        int maxPanelWidth = this.width - margin * 2;
+        int panelWidth = Math.min(targetPanelWidth, maxPanelWidth);
+        if (panelWidth < 200) {
+            panelWidth = maxPanelWidth;
+        }
+        int contentWidth = panelWidth - gap;
+        int listWidth = (int) (contentWidth * 0.382F);
+        int detailWidth = contentWidth - listWidth;
+        int panelLeft = (this.width - panelWidth) / 2;
+        listX0 = panelLeft;
         listX1 = listX0 + listWidth;
         listY0 = LIST_MARGIN_VERTICAL;
         listY1 = listY0 + listHeight;
+        detailY0 = listY0;
+        detailY1 = listY1;
+        detailX0 = listX1 + gap;
+        detailX1 = detailX0 + detailWidth;
         scrollAmount = 0.0;
         scrolling = false;
         scrollGrabOffset = 0.0;
@@ -121,6 +141,7 @@ public class TCRQuestScreen extends Screen {
         }
         guiGraphics.disableScissor();
         renderListBorder(guiGraphics);
+        renderDetailPanel(guiGraphics);
         renderScrollbar(guiGraphics, contentHeight);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
     }
@@ -146,16 +167,7 @@ public class TCRQuestScreen extends Screen {
         heightBase += font.lineHeight; // title
         heightBase += 2; // title to shortDesc gap
         heightBase += font.lineHeight; // shortDesc
-        heightBase += 4; // shortDesc to desc or bottom gap
-        int textWidth = listX1 - listX0 - ENTRY_PADDING * 3 - ICON_SIZE;
-        if (textWidth < 20) {
-            textWidth = 20;
-        }
-        if (selected) {
-            List<FormattedCharSequence> descLines = font.split(quest.getDesc(), textWidth);
-            int perLine = font.lineHeight + 1;
-            heightBase += descLines.size() * perLine;
-        }
+        heightBase += 4; // shortDesc to bottom gap
         heightBase += ENTRY_PADDING; // bottom padding
         return heightBase;
     }
@@ -186,7 +198,6 @@ public class TCRQuestScreen extends Screen {
         int textY = top + ENTRY_PADDING;
         int titleColor = selected ? 0xFFFFE070 : 0xFFFFFFFF;
         int shortDescColor = 0xFFAAAAAA;
-        int descColor = 0xFFDDDDDD;
         guiGraphics.drawString(font, quest.getTitle(), textX, textY, titleColor, false);
         if (selected) {
             Component tracking = TCRCoreMod.getInfo("tracking_quest");
@@ -196,18 +207,6 @@ public class TCRQuestScreen extends Screen {
         }
         textY += font.lineHeight + 2;
         guiGraphics.drawString(font, quest.getShortDesc(), textX, textY, shortDescColor, false);
-        textY += font.lineHeight + 4;
-        if (selected) {
-            int textWidth = right - textX - ENTRY_PADDING;
-            if (textWidth < 40) {
-                textWidth = 40;
-            }
-            List<FormattedCharSequence> descLines = font.split(quest.getDesc(), textWidth);
-            for (FormattedCharSequence line : descLines) {
-                guiGraphics.drawString(font, line, textX, textY, descColor, false);
-                textY += font.lineHeight + 1;
-            }
-        }
         int separatorColor = 0x60FFFFFF;
         guiGraphics.fill(left + 2, top + entryHeight - 1, right - 2, top + entryHeight, separatorColor);
     }
@@ -442,5 +441,52 @@ public class TCRQuestScreen extends Screen {
         guiGraphics.fill(x0 + 1, y1 - 2, x1 - 1, y1 - 1, inner);
         guiGraphics.fill(x0 + 1, y0 + 1, x0 + 2, y1 - 1, inner);
         guiGraphics.fill(x1 - 2, y0 + 1, x1 - 1, y1 - 1, inner);
+        if (detailX1 > detailX0 + 8) {
+            int dx0 = detailX0 - 4;
+            int dx1 = detailX1 + 4;
+            int dy0 = detailY0 - 4;
+            int dy1 = detailY1 + 4;
+            guiGraphics.fill(dx0, dy0, dx1, dy0 + 1, outer);
+            guiGraphics.fill(dx0, dy1 - 1, dx1, dy1, outer);
+            guiGraphics.fill(dx0, dy0, dx0 + 1, dy1, outer);
+            guiGraphics.fill(dx1 - 1, dy0, dx1, dy1, outer);
+            guiGraphics.fill(dx0 + 1, dy0 + 1, dx1 - 1, dy0 + 2, inner);
+            guiGraphics.fill(dx0 + 1, dy1 - 2, dx1 - 1, dy1 - 1, inner);
+            guiGraphics.fill(dx0 + 1, dy0 + 1, dx0 + 2, dy1 - 1, inner);
+            guiGraphics.fill(dx1 - 2, dy0 + 1, dx1 - 1, dy1 - 1, inner);
+        }
+    }
+
+    private void renderDetailPanel(GuiGraphics guiGraphics) {
+        if (detailX1 <= detailX0 + 8 || detailY1 <= detailY0 + 8) {
+            return;
+        }
+        int bg = 0x40000000;
+        guiGraphics.fill(detailX0, detailY0, detailX1, detailY1, bg);
+        if (selectedQuest == null || isEmptyQuest(selectedQuest)) {
+            return;
+        }
+        int padding = 8;
+        int x = detailX0 + padding;
+        int y = detailY0 + padding;
+        int titleColor = 0xFFFFE070;
+        int shortDescColor = 0xFFAAAAAA;
+        int descColor = 0xFFDDDDDD;
+        guiGraphics.drawString(font, selectedQuest.getTitle(), x, y, titleColor, false);
+        y += font.lineHeight + 4;
+        guiGraphics.drawString(font, selectedQuest.getShortDesc(), x, y, shortDescColor, false);
+        y += font.lineHeight + 8;
+        int textWidth = detailX1 - x - padding;
+        if (textWidth < 40) {
+            textWidth = 40;
+        }
+        List<FormattedCharSequence> descLines = font.split(selectedQuest.getDesc(), textWidth);
+        for (FormattedCharSequence line : descLines) {
+            if (y > detailY1 - padding - font.lineHeight) {
+                break;
+            }
+            guiGraphics.drawString(font, line, x, y, descColor, false);
+            y += font.lineHeight + 1;
+        }
     }
 }

@@ -40,6 +40,7 @@ public class PlayerDataManager {
     public static BoolData weapon_innate_used = new BoolData("weapon_innate_used", false);
     public static BoolData pillagerKilled = new BoolData("pillager_killed", false);//初始任务
     public static BoolData mapMarked = new BoolData("map_marked", false);//是否标记过地图了，省的二次搜索地图浪费
+
     public static BoolData stormEyeTraded = new BoolData("storm_eye_traded", false);
     public static BoolData flameEyeTraded = new BoolData("flame_eye_traded", false);
     public static BoolData abyssEyeTraded = new BoolData("abyss_eye_traded", false);
@@ -57,6 +58,7 @@ public class PlayerDataManager {
     public static BoolData mechEyeKilled = new BoolData("mech_eye_killed", false);
     public static BoolData voidEyeKilled = new BoolData("void_eye_killed", false);
     public static BoolData monstEyeKilled = new BoolData("monst_eye_killed", false);
+
     public static BoolData stormEyeBlessed = new BoolData("stormEyeBlessed", false);
     public static BoolData abyssEyeBlessed = new BoolData("abyssEyeBlessed", false);
     public static BoolData desertEyeBlessed = new BoolData("desertEyeBlessed", false);
@@ -65,6 +67,15 @@ public class PlayerDataManager {
     public static BoolData mechEyeBlessed = new BoolData("mechEyeBlessed", false);
     public static BoolData monstEyeBlessed = new BoolData("monstEyeBlessed", false);
     public static BoolData voidEyeBlessed = new BoolData("voidEyeBlessed", false);
+
+    public static BoolData stormEyeActivated = new BoolData("stormEyeActivated", false);
+    public static BoolData abyssEyeActivated = new BoolData("abyssEyeActivated", false);
+    public static BoolData desertEyeActivated = new BoolData("desertEyeActivated", false);
+    public static BoolData cursedEyeActivated = new BoolData("cursedEyeActivated", false);
+    public static BoolData flameEyeActivated = new BoolData("flameEyeActivated", false);
+    public static BoolData mechEyeActivated = new BoolData("mechEyeActivated", false);
+    public static BoolData monstEyeActivated = new BoolData("monstEyeActivated", false);
+    public static BoolData voidEyeActivated = new BoolData("voidEyeActivated", false);
 
     public static boolean canGetInvite(Player player) {
         return mechEyeTraded.get(player) && monstEyeTraded.get(player) && voidEyeTraded.get(player);

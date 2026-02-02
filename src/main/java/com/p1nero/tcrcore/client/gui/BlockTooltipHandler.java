@@ -92,7 +92,7 @@ public class BlockTooltipHandler {
 
         if(block instanceof AbstractAltarBlock abstractAltarBlock) {
             if(minecraft.level.getBlockEntity(blockPos) instanceof AbstractAltarBlockEntity entity) {
-                if(!entity.isActivated()){
+                if(!entity.isActivated(minecraft.player)){
                     return;
                 }
             }

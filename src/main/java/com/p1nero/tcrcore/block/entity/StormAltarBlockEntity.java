@@ -18,9 +18,13 @@ public class StormAltarBlockEntity extends AbstractAltarBlockEntity {
     }
 
     @Override
-    protected void onActive(Player pPlayer, ItemStack mainHandItem, ServerLevel pLevel, BlockPos pPos) {
-        super.onActive(pPlayer, mainHandItem, pLevel, pPos);
-        TCRMainLevelSaveData.get(pLevel).setStormFinish(true);
+    public void setActivated(Player player, boolean activated) {
+        PlayerDataManager.stormEyeActivated.put(player, activated);
+    }
+
+    @Override
+    public boolean isActivated(Player player) {
+        return PlayerDataManager.stormEyeActivated.get(player);
     }
 
     @Override

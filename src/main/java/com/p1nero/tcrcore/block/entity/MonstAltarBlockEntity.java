@@ -21,6 +21,16 @@ public class MonstAltarBlockEntity extends AbstractAltarBlockEntity {
     }
 
     @Override
+    public void setActivated(Player player, boolean activated) {
+        PlayerDataManager.monstEyeActivated.put(player, activated);
+    }
+
+    @Override
+    public boolean isActivated(Player player) {
+        return PlayerDataManager.monstEyeActivated.get(player);
+    }
+
+    @Override
     protected ParticleOptions getSpawnerParticle() {
         return ParticleTypes.LAVA;
     }

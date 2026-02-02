@@ -2,6 +2,7 @@ package com.p1nero.tcrcore.item;
 
 import com.github.L_Ender.cataclysm.items.The_Incinerator;
 import com.p1nero.tcrcore.TCRCoreMod;
+import com.p1nero.tcrcore.item.custom.CoreFlintItem;
 import com.p1nero.tcrcore.item.custom.DualBokkenItem;
 import com.p1nero.tcrcore.item.custom.OracleItem;
 import com.p1nero.tcrcore.item.custom.SimpleDescriptionItem;
@@ -20,6 +21,7 @@ public class TCRItems {
     public static final RegistryObject<Item> VOID_CORE = REGISTRY.register("void_core", () -> new SimpleDescriptionItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), true));
     public static final RegistryObject<Item> DUAL_BOKKEN = REGISTRY.register("dual_bokken", () -> new DualBokkenItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant()));
     public static final RegistryObject<Item> PROOF_OF_ADVENTURE = REGISTRY.register("proof_of_adventure", () -> new SimpleDescriptionItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), true));
+    public static final RegistryObject<Item> CORE_FLINT = REGISTRY.register("core_flint", () -> new CoreFlintItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
 
     public static final RegistryObject<Item> THE_INCINERATOR_SOUL = REGISTRY.register("the_incinerator_soul", () -> new The_Incinerator((new Item.Properties()).stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
 }

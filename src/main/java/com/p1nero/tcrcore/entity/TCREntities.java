@@ -3,13 +3,8 @@ package com.p1nero.tcrcore.entity;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.entity.custom.CustomColorItemEntity;
 import com.p1nero.tcrcore.entity.custom.aine_iris.AineIrisEntity;
-import com.p1nero.tcrcore.entity.custom.cataclysm_boss.BaseBossEntity;
-import com.p1nero.tcrcore.entity.custom.cataclysm_boss.cloia.CloiaEntity;
-import com.p1nero.tcrcore.entity.custom.cataclysm_boss.ignis.IgnisEntity;
-import com.p1nero.tcrcore.entity.custom.cataclysm_boss.nethermel.NethermalEntity;
-import com.p1nero.tcrcore.entity.custom.cataclysm_boss.scylla.ScyllaEntity;
-import com.p1nero.tcrcore.entity.custom.girl.GirlEntity;
-import com.p1nero.tcrcore.entity.custom.guider.GuiderEntity;
+import com.p1nero.tcrcore.entity.custom.ferry_girl.FerryGirlEntity;
+import com.p1nero.tcrcore.entity.custom.chronos_sol.ChronosSolEntity;
 import com.p1nero.tcrcore.entity.custom.tutorial_golem.TutorialGolem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -22,7 +17,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import net.shelmarow.tcr_bosses.gameassets.TCRArmatures;
 import yesman.epicfight.api.forgeevent.EntityPatchRegistryEvent;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.world.capabilities.entitypatch.mob.IronGolemPatch;
@@ -34,11 +28,11 @@ public class TCREntities {
     public static final RegistryObject<EntityType<CustomColorItemEntity>> CUSTOM_COLOR_ITEM = register("custom_color_item",
             EntityType.Builder.<CustomColorItemEntity>of(CustomColorItemEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(6).updateInterval(20));
 
-    public static final RegistryObject<EntityType<GuiderEntity>> GUIDER = register("guider",
-            EntityType.Builder.of(GuiderEntity::new, MobCategory.CREATURE).sized(0.8f, 2.3f).fireImmune());
+    public static final RegistryObject<EntityType<ChronosSolEntity>> GUIDER = register("guider",
+            EntityType.Builder.of(ChronosSolEntity::new, MobCategory.CREATURE).sized(0.8f, 2.3f).fireImmune());
 
-    public static final RegistryObject<EntityType<GirlEntity>> GIRL = register("girl",
-            EntityType.Builder.of(GirlEntity::new, MobCategory.CREATURE).sized(0.6f, 1.9f).fireImmune());
+    public static final RegistryObject<EntityType<FerryGirlEntity>> GIRL = register("girl",
+            EntityType.Builder.of(FerryGirlEntity::new, MobCategory.CREATURE).sized(0.6f, 1.9f).fireImmune());
 
     public static final RegistryObject<EntityType<AineIrisEntity>> AINE_IRIS = register("aine",
             EntityType.Builder.of(AineIrisEntity::new, MobCategory.CREATURE).sized(0.6f, 1.9f).fireImmune());
@@ -46,33 +40,16 @@ public class TCREntities {
     public static final RegistryObject<EntityType<TutorialGolem>> TUTORIAL_GOLEM = register("tutorial_golem",
             EntityType.Builder.of(TutorialGolem::new, MobCategory.CREATURE).sized(1.4F, 2.7f).fireImmune());
 
-    public static final RegistryObject<EntityType<CloiaEntity>> CLOIA = register("cloia",
-            EntityType.Builder.of(CloiaEntity::new, MobCategory.MONSTER).sized(0.6f * 1.4F, 1.8f * 1.4f));
-
-    public static final RegistryObject<EntityType<IgnisEntity>> IGNIS = register("ignis",
-            EntityType.Builder.of(IgnisEntity::new, MobCategory.MONSTER).sized(0.6f * 1.6F, 1.8f * 1.6f));
-
-    public static final RegistryObject<EntityType<NethermalEntity>> NETHERMEL = register("nethermel",
-            EntityType.Builder.of(NethermalEntity::new, MobCategory.MONSTER).sized(0.6f * 2, 1.8f * 2));
-
-    public static final RegistryObject<EntityType<ScyllaEntity>> SCYLLA = register("scylla",
-            EntityType.Builder.of(ScyllaEntity::new, MobCategory.MONSTER).sized(0.6f * 1.2F, 1.8f * 1.2F));
-
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> entityTypeBuilder) {
         return REGISTRY.register(name, () -> entityTypeBuilder.build(ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, name).toString()));
     }
 
     @SubscribeEvent
     public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
-        event.put(GUIDER.get(), GuiderEntity.setAttributes());
-        event.put(GIRL.get(), GuiderEntity.setAttributes());
-        event.put(AINE_IRIS.get(), GuiderEntity.setAttributes());
+        event.put(GUIDER.get(), ChronosSolEntity.setAttributes());
+        event.put(GIRL.get(), ChronosSolEntity.setAttributes());
+        event.put(AINE_IRIS.get(), ChronosSolEntity.setAttributes());
         event.put(TUTORIAL_GOLEM.get(), TutorialGolem.setAttributes());
-
-        event.put(CLOIA.get(), BaseBossEntity.baseAttributes());
-        event.put(IGNIS.get(), BaseBossEntity.baseAttributes());
-        event.put(NETHERMEL.get(), BaseBossEntity.baseAttributes());
-        event.put(SCYLLA.get(), BaseBossEntity.baseAttributes());
 
     }
 
@@ -86,7 +63,6 @@ public class TCREntities {
     public static void setArmature(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             Armatures.registerEntityTypeArmature(TUTORIAL_GOLEM.get(), Armatures.IRON_GOLEM);
-            Armatures.registerEntityTypeArmature(IGNIS.get(), TCRArmatures.YAN_MO);
         });
     }
 

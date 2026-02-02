@@ -2,11 +2,12 @@ package com.p1nero.tcrcore.datagen.lang;
 
 import com.github.L_Ender.cataclysm.init.ModItems;
 import com.hm.efn.registries.EFNItem;
+import com.p1nero.tcr_bosses.entity.TCRBossEntities;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.block.TCRBlocks;
 import com.p1nero.tcrcore.capability.TCRQuestManager;
 import com.p1nero.tcrcore.client.KeyMappings;
-import com.p1nero.tcrcore.client.gui.BanPortalScreenHandler;
+import com.p1nero.tcrcore.client.gui.dialog.BanPortalScreenHandler;
 import com.p1nero.tcrcore.effect.TCREffects;
 import com.p1nero.tcrcore.entity.TCREntities;
 import com.p1nero.tcrcore.item.TCRItems;
@@ -67,6 +68,8 @@ public class    TCRZHLangGenerator extends TCRLangProvider {
         this.addSkill("fire_avoid", "避火咒", "免疫火焰伤害！");
         this.addSkill("perfect_dodge", "闪避特效", "完美闪避时将有帅气的动作！");
 
+        this.add(TCRItems.CORE_FLINT.get(), "炉心火石");
+        this.addItemUsageInfo(TCRItems.CORE_FLINT.get(), "在黑曜石框架上使用，可打开地狱之门。");
         this.add(TCRItems.PROOF_OF_ADVENTURE.get(), "冒险之证");
         this.addItemUsageInfo(TCRItems.PROOF_OF_ADVENTURE.get(), "此证乃是用所有败于你剑下的强敌之名铸就。你的冒险已抵达终点，你的勇气已化为传奇。");
         this.add(TCRItems.DUAL_BOKKEN.get(), "双持木棍");
@@ -83,6 +86,7 @@ public class    TCRZHLangGenerator extends TCRLangProvider {
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "上面写着古老的神谕，暗示了火种散落的地方。回主城给守望者看看吧，说不定对冒险有帮助！");
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "§c多人模式请勿占据他人任务道具！每人都需各自提交！", 2);
 
+        this.addInfo("please_use_custom_flint_and_steel", "请使用[%s]开启地狱传送门");
         this.addInfo("exit_quest_screen", "确定");
         this.addInfo("no_quest", "暂无任务");
         this.addInfo("tracking_quest", " [☆追踪中]");
@@ -215,10 +219,16 @@ public class    TCRZHLangGenerator extends TCRLangProvider {
         this.add(TCREntities.GUIDER.get(), "守望者");
         this.add(TCREntities.GIRL.get(), "摆渡人");
         this.add(TCREntities.TUTORIAL_GOLEM.get(), "训练傀儡");
-        this.add(TCREntities.CLOIA.get(), "克洛娅·缚咒");
-        this.add(TCREntities.NETHERMEL.get(), "奈特梅尔·烬钢");
-        this.add(TCREntities.IGNIS.get(), "伊格尼斯·焚心");
-        this.add(TCREntities.SCYLLA.get(), "斯库拉·涡潮");
+        //TODO 补名字
+        this.add(TCRBossEntities.LEVIATHAN_HUMANOID.get(), "");
+        this.add(TCRBossEntities.HARBINGER_HUMANOID.get(), "");
+        this.add(TCRBossEntities.ENDER_GUARDIAN_HUMANOID.get(), "");
+        this.add(TCRBossEntities.IGNIS_HUMANOID.get(), "");
+        this.add(TCRBossEntities.IGNIS_SHIELD.get(), "");
+        this.add(TCRBossEntities.SCYLLA_HUMANOID.get(), "");
+        this.add(TCRBossEntities.ANCIENT_REMNANT_HUMANOID.get(), "");
+        this.add(TCRBossEntities.MALEDICTUS_HUMANOID.get(), "");
+        this.add(TCRBossEntities.NETHERITE_HUMANOID.get(), "");
 
         BanPortalScreenHandler.onGenerateZH(this);
 

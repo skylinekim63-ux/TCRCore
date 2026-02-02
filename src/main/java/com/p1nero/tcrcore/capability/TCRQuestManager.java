@@ -1,6 +1,5 @@
 package com.p1nero.tcrcore.capability;
 
-import dev.ftb.mods.ftbquests.quest.Quest;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -9,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class TCRQuestManager {
     public static final int NO_QUEST = 0;
@@ -142,6 +142,18 @@ public class TCRQuestManager {
 
         public int getId() {
             return id;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (o == null || getClass() != o.getClass()) return false;
+            Quest quest = (Quest) o;
+            return id == quest.id;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hashCode(id);
         }
     }
 }

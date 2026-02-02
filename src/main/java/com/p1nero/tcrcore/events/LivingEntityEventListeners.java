@@ -17,7 +17,6 @@ import com.obscuria.aquamirae.AquamiraeUtils;
 import com.obscuria.aquamirae.common.entities.CaptainCornelia;
 import com.obscuria.aquamirae.registry.AquamiraeItems;
 import com.p1nero.cataclysm_dimension.worldgen.CataclysmDimensions;
-import com.p1nero.dialog_lib.events.ServerNpcEntityInteractEvent;
 import com.p1nero.entityrespawner.EntityRespawnerMod;
 import com.p1nero.entityrespawner.entity.SoulEntity;
 import com.p1nero.tcrcore.TCRCoreMod;
@@ -61,7 +60,6 @@ import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.entity.monster.Pillager;
-import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Items;
@@ -499,13 +497,6 @@ public class LivingEntityEventListeners {
         }
     }
 
-    @SubscribeEvent
-    public static void onLivingDialog(ServerNpcEntityInteractEvent event) {
-        if (event.getSelf() instanceof Villager) {
-            TCRCapabilityProvider.getTCRPlayer(event.getServerPlayer()).setCurrentTalkingEntity(null);
-        }
-    }
-
     /**
      * 减少呼吸消耗
      */
@@ -561,7 +552,7 @@ public class LivingEntityEventListeners {
         ServerLevel serverLevel = (ServerLevel) event.getEntity().level();
 
         if (event.getEntity() instanceof BulldrogiothEntity bulldrogiothEntity) {
-            if (WorldUtil.isInStructure(bulldrogiothEntity, WorldUtil.COVES)) {
+            if (WorldUtil.isInStructure(bulldrogiothEntity, WorldUtil.RIBBIT_VILLAGE)) {
                 bulldrogiothEntity.setGlowingTag(true);
                 saveSpawnPos(bulldrogiothEntity);
             }
@@ -598,9 +589,10 @@ public class LivingEntityEventListeners {
             }
         }
 
+        //末影龙血少，走个过场
         if (event.getEntity() instanceof EnderDragon enderDragon) {
             enderDragon.getAttribute(Attributes.MAX_HEALTH).removeModifier(uuid);
-            AttributeModifier healthBoost = new AttributeModifier(uuid, "Dragon Health Boost", 2, AttributeModifier.Operation.MULTIPLY_BASE);
+            AttributeModifier healthBoost = new AttributeModifier(uuid, "Dragon Health Boost", -0.6, AttributeModifier.Operation.MULTIPLY_BASE);
             enderDragon.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(healthBoost);
             enderDragon.setHealth(enderDragon.getMaxHealth());
         }
@@ -644,7 +636,7 @@ public class LivingEntityEventListeners {
      */
     @SubscribeEvent
     public static void onLivingDespawn(MobSpawnEvent.AllowDespawn event) {
-        if (event.getEntity() instanceof BulldrogiothEntity bulldrogiothEntity && WorldUtil.isInStructure(bulldrogiothEntity, WorldUtil.COVES)) {
+        if (event.getEntity() instanceof BulldrogiothEntity bulldrogiothEntity && WorldUtil.isInStructure(bulldrogiothEntity, WorldUtil.RIBBIT_VILLAGE)) {
             event.setResult(Event.Result.DENY);
         }
     }

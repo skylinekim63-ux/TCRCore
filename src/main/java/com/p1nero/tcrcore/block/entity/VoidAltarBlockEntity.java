@@ -21,6 +21,16 @@ public class VoidAltarBlockEntity extends AbstractAltarBlockEntity {
     }
 
     @Override
+    public void setActivated(Player player, boolean activated) {
+        PlayerDataManager.voidEyeActivated.put(player, activated);
+    }
+
+    @Override
+    public boolean isActivated(Player player) {
+        return PlayerDataManager.voidEyeActivated.get(player);
+    }
+
+    @Override
     protected ParticleOptions getSpawnerParticle() {
         return ParticleTypes.DRAGON_BREATH;
     }
@@ -36,7 +46,7 @@ public class VoidAltarBlockEntity extends AbstractAltarBlockEntity {
     }
 
     protected void playUseEyeTip(Player player) {
-        player.displayClientMessage(TCRCoreMod.getInfo("use_true_eye_tip", Component.literal("???").withStyle(ChatFormatting.GOLD)), true);
+        player.displayClientMessage(TCRCoreMod.getInfo("use_true_eye_tip", ModItems.VOID_EYE.get().getDescription().copy().withStyle(ChatFormatting.GOLD)), true);
     }
 
     @Override

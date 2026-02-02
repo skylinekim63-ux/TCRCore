@@ -225,13 +225,13 @@ dependencies {
     implementation fg.deobf("curse.maven:sword-soaring-1011068:7305158")
     implementation fg.deobf("libs:dodge_parry_reward:20.12.1")
     implementation fg.deobf("curse.maven:epic-fight-avalon-1268823:7225899")
-    implementation fg.deobf("curse.maven:p1neros-dialogue-lib-1274526:7177400")
+    implementation fg.deobf("curse.maven:p1neros-dialogue-lib-1274526:7539373")
     implementation fg.deobf("curse.maven:entity-respawner-1363764:7105518")
 
     implementation fg.deobf("libs:EpicFightNightfall:3.0")
     implementation fg.deobf("curse.maven:nightfall-invade-1362602:7366440")
     implementation fg.deobf("curse.maven:combat-evolution-1377795:7373729")
-    implementation fg.deobf("libs:tcr_bosses:1.0.7")
+    implementation fg.deobf("libs:tcr_bosses:1.0.8")
     implementation fg.deobf("libs:mimic:1.0.0")
 
 //    implementation fg.deobf("curse.maven:shoulder-surfing-reloaded-243190:6993788")

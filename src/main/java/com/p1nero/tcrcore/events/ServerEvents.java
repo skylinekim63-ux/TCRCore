@@ -12,7 +12,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -49,9 +48,9 @@ public class ServerEvents {
             //懒得重新搞地图了
             TCRMainLevelSaveData tcrMainLevelSaveData = TCRMainLevelSaveData.get(serverLevel);
             if(!tcrMainLevelSaveData.isGirlPlaced()) {
-                TCREntities.GIRL.get().spawn(serverLevel, new BlockPos(WorldUtil.GIRL_POS), MobSpawnType.SPAWNER);
-                serverLevel.setBlock(new BlockPos(WorldUtil.GIRL_PORTAL_POS), ModBlocks.waystone.defaultBlockState(), 3);
-                serverLevel.setBlock(new BlockPos(WorldUtil.GIRL_PORTAL_POS).above(), ModBlocks.waystone.defaultBlockState().setValue(WaystoneBlock.HALF, DoubleBlockHalf.UPPER), 3);
+                TCREntities.GIRL.get().spawn(serverLevel, new BlockPos(WorldUtil.FERRY_GIRL_POS), MobSpawnType.SPAWNER);
+                serverLevel.setBlock(new BlockPos(WorldUtil.FERRY_GIRL_PORTAL_POS), ModBlocks.waystone.defaultBlockState(), 3);
+                serverLevel.setBlock(new BlockPos(WorldUtil.FERRY_GIRL_PORTAL_POS).above(), ModBlocks.waystone.defaultBlockState().setValue(WaystoneBlock.HALF, DoubleBlockHalf.UPPER), 3);
                 tryHandleLight(serverLevel);
                 tcrMainLevelSaveData.setGirlPlaced(true);
             }

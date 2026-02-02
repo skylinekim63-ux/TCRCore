@@ -18,9 +18,13 @@ public class DesertAltarBlockEntity extends AbstractAltarBlockEntity {
     }
 
     @Override
-    protected void onActive(Player pPlayer, ItemStack mainHandItem, ServerLevel pLevel, BlockPos pPos) {
-        super.onActive(pPlayer, mainHandItem, pLevel, pPos);
-        TCRMainLevelSaveData.get(pLevel).setDesertFinish(true);
+    public void setActivated(Player player, boolean activated) {
+        PlayerDataManager.desertEyeActivated.put(player, activated);
+    }
+
+    @Override
+    public boolean isActivated(Player player) {
+        return PlayerDataManager.desertEyeActivated.get(player);
     }
 
     @Override

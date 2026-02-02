@@ -40,7 +40,7 @@ public class AltarBlockRenderer <T extends AbstractAltarBlockEntity> implements 
         if(localPlayer == null) {
             return;
         }
-        if(altarBlockEntity.isActivated()) {
+        if(altarBlockEntity.isActivated(localPlayer)) {
             if(stack == null) {
                 stack = altarBlockEntity.getItemInnate().getDefaultInstance();
             }

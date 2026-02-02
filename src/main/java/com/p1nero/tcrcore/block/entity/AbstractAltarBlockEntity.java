@@ -7,6 +7,8 @@ import com.p1nero.cataclysm_dimension.worldgen.portal.CDTeleporter;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.TCRQuestManager;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -34,17 +36,10 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class AbstractAltarBlockEntity extends BlockEntity {
     protected final Item itemInnate;
-    protected boolean isActivated;
 
     public AbstractAltarBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState, Item item) {
         super(type, pos, blockState);
         this.itemInnate = item;
-    }
-
-    @Override
-    public void load(@NotNull CompoundTag tag) {
-        isActivated = tag.getBoolean("isActivated");
-        super.load(tag);
     }
 
     @Override
@@ -61,13 +56,15 @@ public abstract class AbstractAltarBlockEntity extends BlockEntity {
 
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
-        tag.putBoolean("isActivated", isActivated);
         super.saveAdditional(tag);
     }
 
-    public boolean isActivated() {
-        return isActivated;
-    }
+    /**
+     * 每个人进度独立
+     */
+    public abstract void setActivated(Player player, boolean activated);
+
+    public abstract boolean isActivated(Player player);
 
     public Item getItemInnate() {
         return itemInnate;
@@ -93,7 +90,7 @@ public abstract class AbstractAltarBlockEntity extends BlockEntity {
         if(minecraftServer == null) {
             return;
         }
-        if(this.isActivated){
+        if(this.isActivated(pPlayer)){
             if(!pPlayer.isCreative() && !checkEyeFound(pPlayer)) {
                 pPlayer.displayClientMessage(TCRCoreMod.getInfo("can_not_enter_before_finish"), false);
                 return;
@@ -138,15 +135,19 @@ public abstract class AbstractAltarBlockEntity extends BlockEntity {
 
         ItemStack mainHandItem = pPlayer.getItemInHand(pHand);
         //激活
-        if(mainHandItem.is(this.itemInnate) && !this.isActivated) {
-            onActive(pPlayer, mainHandItem, serverLevel, pPos);
+        if(mainHandItem.is(this.itemInnate) && !this.isActivated(pPlayer)) {
+            this.onActive(pPlayer, mainHandItem, serverLevel, pPos);
         }
     }
 
     public static <T extends BlockEntity> void tick(Level pLevel, BlockPos pPos, BlockState state, T t) {
         if(t instanceof AbstractAltarBlockEntity abstractAltarBlockEntity) {
             if(pLevel.isClientSide) {
-                if(abstractAltarBlockEntity.isActivated) {
+                LocalPlayer localPlayer = Minecraft.getInstance().player;
+                if(localPlayer == null) {
+                    return;
+                }
+                if(abstractAltarBlockEntity.isActivated(localPlayer)) {
                     if(pLevel.getGameTime() % 10 == 0) {
                         double rx = pPos.getX() + pLevel.getRandom().nextFloat();
                         double ry = pPos.getY() + pLevel.getRandom().nextFloat();
@@ -163,7 +164,7 @@ public abstract class AbstractAltarBlockEntity extends BlockEntity {
                         pLevel.getEntitiesOfClass(Player.class, (new AABB(center, center)).inflate(5.0F)).forEach(abstractAltarBlockEntity::playUseEyeTip);
                     }
                 }
-            } else if(pLevel.getGameTime() % 120 == 0 && abstractAltarBlockEntity.isActivated){
+            } else if(pLevel.getGameTime() % 120 == 0){
                 pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BEACON_AMBIENT, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
         }
@@ -178,7 +179,7 @@ public abstract class AbstractAltarBlockEntity extends BlockEntity {
     }
 
     protected void onActive(Player pPlayer, ItemStack mainHandItem, ServerLevel pLevel, BlockPos pPos) {
-        this.isActivated = true;
+        this.setActivated(pPlayer, true);
         this.sync();
         pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1.0F, 1.0F);
     }

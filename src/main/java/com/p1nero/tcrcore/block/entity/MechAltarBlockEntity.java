@@ -20,6 +20,16 @@ public class MechAltarBlockEntity extends AbstractAltarBlockEntity {
     }
 
     @Override
+    public void setActivated(Player player, boolean activated) {
+        PlayerDataManager.mechEyeActivated.put(player, activated);
+    }
+
+    @Override
+    public boolean isActivated(Player player) {
+        return PlayerDataManager.mechEyeActivated.get(player);
+    }
+
+    @Override
     protected ParticleOptions getSpawnerParticle() {
         return ModParticle.FLAME_JET.get();
     }

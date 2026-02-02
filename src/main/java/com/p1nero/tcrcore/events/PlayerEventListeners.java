@@ -160,7 +160,7 @@ public class PlayerEventListeners {
                 ItemUtil.addItem(serverPlayer, TDGItems.TUDI_COMMAND_SPELL.get(), 1);
                 ItemUtil.addItem(serverPlayer, EpicSkillsItems.ABILIITY_STONE.get(), 1);
                 //引导玩家去守望者处
-                XianQiEntity xianQiEntity = new XianQiEntity(serverPlayer.serverLevel(), WorldUtil.GUIDER_POS, serverPlayer, null);
+                XianQiEntity xianQiEntity = new XianQiEntity(serverPlayer.serverLevel(), WorldUtil.COL_GUIDER_POS, serverPlayer, null);
                 serverPlayer.displayClientMessage(TCRCoreMod.getInfo("cloud_follow_me"), false);
                 serverPlayer.serverLevel().addFreshEntity(xianQiEntity);
                 PlayerDataManager.firstJoint.put(serverPlayer, true);
@@ -293,13 +293,6 @@ public class PlayerEventListeners {
                 if (WorldUtil.inMainLand(serverPlayer)) {
                     if(serverPlayer.isSprinting()) {
                         serverPlayer.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 2, false, false, true));
-                    }
-                    if(serverPlayer.getY() < 63 && !serverPlayer.isPassenger()) {
-                        if(PlayerDataManager.wayStoneInteracted.get(serverPlayer)) {
-                            serverPlayer.changeDimension(serverPlayer.server.getLevel(Level.OVERWORLD), new OverworldVillageTeleporter());
-                        } else {
-                            serverPlayer.displayClientMessage(TCRCoreMod.getInfo("need_to_unlock_waystone").withStyle(ChatFormatting.RED), true);
-                        }
                     }
                 }
 

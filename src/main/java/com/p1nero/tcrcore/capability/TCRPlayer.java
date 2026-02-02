@@ -248,7 +248,7 @@ public class TCRPlayer {
                         try {
                             pos = switch (newStage) {
                                 case 1 -> WorldUtil.getNearbyStructurePos(serverPlayer, WorldUtil.SKY_ISLAND, 230); // 天空岛
-                                case 2 -> WorldUtil.getNearbyStructurePos(serverPlayer, WorldUtil.COVES, 145); // 隐秘水湾
+                                case 2 -> WorldUtil.getNearbyStructurePos(serverPlayer, WorldUtil.RIBBIT_VILLAGE, 145); // 隐秘水湾
                                 case 3 -> WorldUtil.getNearbyStructurePos(serverPlayer, WorldUtil.SAND, 64); // 奇美拉
                                 case 4 -> WorldUtil.getNearbyStructurePos(serverPlayer, WorldUtil.CURSED, 64); // 船长
                                 case 5 -> WorldUtil.getNearbyStructurePos(serverPlayer, WorldUtil.FIRE, 95);

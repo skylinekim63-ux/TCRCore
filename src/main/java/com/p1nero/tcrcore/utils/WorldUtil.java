@@ -2,8 +2,6 @@ package com.p1nero.tcrcore.utils;
 
 import com.mojang.datafixers.util.Pair;
 import com.p1nero.tcrcore.worldgen.TCRDimensions;
-import com.p1nero.tudigong.TDGConfig;
-import com.p1nero.tudigong.util.StructureUtils;
 import com.yungnickyoung.minecraft.yungsapi.criteria.SafeStructureLocationPredicate;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.*;
@@ -35,18 +33,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class WorldUtil {
-    public static final Vec3i AINE_IRIS_POS = new Vec3i(80, 74, -133);
-    public static final Vec3i GIRL_POS = new Vec3i(80, 74, -133);
-    public static final Vec3i GIRL_PORTAL_POS = new Vec3i(80, 73, -138);
+    public static final Vec3i AINE_POS = new Vec3i(80, 74, -133);
+    public static final Vec3i FERRY_GIRL_POS = new Vec3i(80, 74, -133);
+    public static final Vec3i FERRY_GIRL_PORTAL_POS = new Vec3i(80, 73, -138);
     public static final Vec3i START_POS = new Vec3i(-3, 75, -190);
     public static final Vec3i GODNESS_STATUE_POS = new Vec3i(-169, 79, -118);
     public static final Vec3 GOLEM_CENTER_POS_VEC3 = new Vec3(78, 75, -190);
     public static final Vec3i GOLEM_CENTER_POS_VEC3I = new Vec3i(78, 75, -190);
     public static final Vec3 CENTER_POS = new Vec3(-19, 75, -79);
-    public static final Vec3 GUIDER_POS = new Vec3(-186, 85, -191);
-    public static final Vec3i GUIDER_BLOCK_POS = new Vec3i(-186, 85, -191);
+    public static final Vec3 COL_GUIDER_POS = new Vec3(-186, 85, -191);
+    public static final Vec3i COL_GUIDER_BLOCK_POS = new Vec3i(-186, 85, -191);
 //    public static final String COVES = "trek:overworld/very_rare/coves";
-    public static final String COVES = "ribbits:ribbit_village";
+    public static final String RIBBIT_VILLAGE = "ribbits:ribbit_village";
     public static final String SKY_ISLAND = "trek:overworld/very_rare/floating_farm_large";
     public static final String SAND = "dodosmobs:jungle_prison";
     public static final String CURSED = "aquamirae:ship";
