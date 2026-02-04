@@ -122,14 +122,14 @@ public class TutorialGolem extends IronGolem {
                 return;
             }
             if(!PlayerDataManager.dodged.get(serverPlayer)) {
-                PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(1), serverPlayer);
+                PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(PlayTitlePacket.DODGE_TUTORIAL), serverPlayer);
             } else if(!PlayerDataManager.parried.get(serverPlayer)) {
-                PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(2), serverPlayer);
+                PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(PlayTitlePacket.PARRY_TUTORIAL), serverPlayer);
 //            } else if(!PlayerDataManager.weapon_innate_used.get(serverPlayer)) {
 //                serverPlayer.connection.send(new ClientboundSetTitleTextPacket(TCRCoreMod.getInfo("weapon_innate_tutorial")));
 //                serverPlayer.displayClientMessage(TCRCoreMod.getInfo("weapon_innate_charge_tutorial"), true);
             } else if(!PlayerDataManager.locked.get(serverPlayer)) {
-                PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(3), serverPlayer);
+                PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(PlayTitlePacket.LOCK_TUTORIAL), serverPlayer);
             } else if (!PlayerDataManager.tutorial_passed.get(serverPlayer)){
                 serverPlayer.connection.send(new ClientboundSetTitleTextPacket(TCRCoreMod.getInfo("you_pass")));
                 serverPlayer.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ(), 1.0F, 1.0F, serverPlayer.getRandom().nextInt()));

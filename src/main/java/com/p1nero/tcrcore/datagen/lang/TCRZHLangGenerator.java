@@ -5,8 +5,7 @@ import com.hm.efn.registries.EFNItem;
 import com.p1nero.tcr_bosses.entity.TCRBossEntities;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.block.TCRBlocks;
-import com.p1nero.tcrcore.capability.TCRQuestManager;
-import com.p1nero.tcrcore.client.KeyMappings;
+import com.p1nero.tcrcore.client.TCRKeyMappings;
 import com.p1nero.tcrcore.client.gui.dialog.BanPortalScreenHandler;
 import com.p1nero.tcrcore.client.gui.dialog.StartScreenHandler;
 import com.p1nero.tcrcore.effect.TCREffects;
@@ -56,8 +55,8 @@ public class    TCRZHLangGenerator extends TCRLangProvider {
 
         this.add("itemGroup.tcr.items", "远梦之棺 —— 核心 物品");
         this.add("key.categories." + TCRCoreMod.MOD_ID, "远梦之棺 —— 核心");
-        this.addKeyMapping(KeyMappings.RIPTIDE, "激流");
-        this.addKeyMapping(KeyMappings.SHOW_TASK, "隐藏/显示指引");
+        this.addKeyMapping(TCRKeyMappings.RIPTIDE, "激流");
+        this.addKeyMapping(TCRKeyMappings.SHOW_QUESTS, "隐藏/显示指引");
 
         this.add("skill_tree.sword_soaring.unlock_tip", "与§6[天空岛]§r村民用绿宝石交易解锁");
         this.add("unlock_tip.tcrcore.battleborn.water_avoid1", "使用§d[紫水晶块]§f向§6[呱呱]§f交易习得");
@@ -85,6 +84,7 @@ public class    TCRZHLangGenerator extends TCRLangProvider {
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "上面写着古老的神谕，暗示了火种散落的地方。回主城给守望者看看吧，说不定对冒险有帮助！");
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "§c多人模式请勿占据他人任务道具！每人都需各自提交！", 2);
 
+        this.addInfo("press_to_show_quest_ui", "按 %s 键查看任务列表");
         this.addInfo("please_use_custom_flint_and_steel", "请使用[%s]开启地狱传送门");
         this.addInfo("exit_quest_screen", "确定");
         this.addInfo("no_quest", "暂无任务");

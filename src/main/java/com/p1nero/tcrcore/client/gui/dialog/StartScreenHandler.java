@@ -40,8 +40,8 @@ public class StartScreenHandler {
     public static void onGenerateEN(TCRLangProvider generator) {
         generator.addScreenAns(name, 0, "Aine! Aine! (You keep repeating this name over and over.)");
         generator.addScreenOpt(name, 0, "Continue");
-        generator.addScreenAns(name, 0, "What is this place? Such a grand sanctuary! Let’s go inside and take a look—maybe Aine is waiting for me in there.");
-        generator.addScreenOpt(name, 0, "Enter the Sanctuary");
+        generator.addScreenAns(name, 1, "What is this place? Such a grand sanctuary! Let’s go inside and take a look—maybe Aine is waiting for me in there.");
+        generator.addScreenOpt(name, 1, "Enter the Sanctuary");
     }
 
 }

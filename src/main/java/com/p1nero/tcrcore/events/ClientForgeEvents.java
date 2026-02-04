@@ -39,7 +39,7 @@ public class ClientForgeEvents {
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event){
         if(Minecraft.getInstance().player != null) {
-            CustomQuestRenderer.tick(Minecraft.getInstance().player);
+            CustomQuestOverlayRenderer.tick(Minecraft.getInstance().player);
         }
     }
 
@@ -77,7 +77,7 @@ public class ClientForgeEvents {
     @SubscribeEvent
     public static void onRenderGui(RenderGuiEvent.Pre event) {
         if(!Minecraft.getInstance().isPaused() && Minecraft.getInstance().screen == null && Minecraft.getInstance().player != null) {
-            CustomQuestRenderer.render(Minecraft.getInstance().player, event.getGuiGraphics(), event.getWindow(), event.getPartialTick());
+            CustomQuestOverlayRenderer.render(Minecraft.getInstance().player, event.getGuiGraphics(), event.getWindow(), event.getPartialTick());
         }
     }
 

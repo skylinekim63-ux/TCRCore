@@ -6,6 +6,8 @@ import com.p1nero.tcrcore.TCRClientConfig;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
 import com.p1nero.tcrcore.capability.TCRQuestManager;
+import com.p1nero.tcrcore.client.TCRKeyMappings;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
@@ -15,13 +17,14 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class CustomQuestRenderer {
+public class CustomQuestOverlayRenderer {
     private static long fadeStartTime = 0;
     private static boolean hasTask = false;
     private static boolean lastHasTask = false;
     private static float alpha = 0.0f;
     private static final int FADE_DURATION = 30; // 30 ticks = 1.5 seconds
     private static Component lastQuestShortDesc = Component.empty();
+    private static Component hintText = Component.literal("按 %s 键查看任务列表。");
     private static int x;
     private static int y;
     private static int textX;
@@ -37,6 +40,7 @@ public class CustomQuestRenderer {
         // Calculate alpha based on game time with partialTick interpolation
         timeSinceStateChange = currentTime - fadeStartTime;
         hasTask = TCRQuestManager.hasQuest(localPlayer);
+        hintText = TCRCoreMod.getInfo("press_to_show_quest_ui", TCRKeyMappings.SHOW_QUESTS.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD));
         // Handle state changes
         if (hasTask != lastHasTask) {
             fadeStartTime = currentTime;
@@ -102,6 +106,14 @@ public class CustomQuestRenderer {
 
         // Draw main text
         guiGraphics.drawString(minecraft.font, lastQuestShortDesc, textX, textY, textColor, true);
+
+        // Draw hint text below in smaller size
+        int hintTextColor = (int) (alpha * 255) << 24 | 0xAAAAAA;
+        guiGraphics.pose().pushPose();
+        guiGraphics.pose().translate(textX, textY + 12, 0);
+        guiGraphics.pose().scale(0.7F, 0.7F, 0.7F);
+        guiGraphics.drawString(minecraft.font, hintText, 0, 0, hintTextColor, true);
+        guiGraphics.pose().popPose();
 
         // Reset color
         guiGraphics.setColor(1.0f, 1.0f, 1.0f, 1.0f);

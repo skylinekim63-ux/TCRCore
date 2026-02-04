@@ -5,7 +5,7 @@ import com.hm.efn.registries.EFNItem;
 import com.p1nero.tcr_bosses.entity.TCRBossEntities;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.block.TCRBlocks;
-import com.p1nero.tcrcore.client.KeyMappings;
+import com.p1nero.tcrcore.client.TCRKeyMappings;
 import com.p1nero.tcrcore.client.gui.dialog.BanPortalScreenHandler;
 import com.p1nero.tcrcore.client.gui.dialog.StartScreenHandler;
 import com.p1nero.tcrcore.effect.TCREffects;
@@ -55,8 +55,8 @@ public class TCRENLangGenerator extends TCRLangProvider {
 
         this.add("itemGroup.tcr.items", "The Casket of Reveries — Core Items");
         this.add("key.categories." + TCRCoreMod.MOD_ID, "The Casket of Reveries — Core");
-        this.addKeyMapping(KeyMappings.RIPTIDE, "Riptide");
-        this.addKeyMapping(KeyMappings.SHOW_TASK, "Show/Hide Task");
+        this.addKeyMapping(TCRKeyMappings.RIPTIDE, "Riptide");
+        this.addKeyMapping(TCRKeyMappings.SHOW_QUESTS, "Show/Hide Task");
 
         this.add("skill_tree.sword_soaring.unlock_tip", "Unlocked by interacting with villagers in §6[Sky Island]§r using emeralds");
         this.add("unlock_tip.tcrcore.battleborn.water_avoid1", "Learned by trading with §6[Ribbit]§f using §d[Block of Amethyst]§f");
@@ -84,6 +84,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "It bears an ancient oracle hinting at the locations of scattered embers. Show it to the The Sanctuary Keeper in the The Sanctuary; it might aid your adventure!");
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "§cIn multiplayer mode, do not occupy other players'! Everyone must submit their own!", 2);
 
+        this.addInfo("press_to_show_quest_ui", "Press %s to view quests");
         this.addInfo("please_use_custom_flint_and_steel", "Please use [%s] to spawn portal");
         this.addInfo("exit_quest_screen", "OK");
         this.addInfo("no_quest", "No Quest");

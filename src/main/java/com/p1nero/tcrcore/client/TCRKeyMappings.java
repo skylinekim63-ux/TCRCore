@@ -15,10 +15,10 @@ import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(modid = TCRCoreMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
-public class KeyMappings {
+public class TCRKeyMappings {
 
 	public static final KeyMapping RIPTIDE = new KeyMapping(buildKey("riptide"), GLFW.GLFW_KEY_LEFT_ALT, "key.categories." + TCRCoreMod.MOD_ID);
-    public static final KeyMapping SHOW_TASK = new KeyMapping(buildKey("show_task"), GLFW.GLFW_KEY_J, "key.categories." + TCRCoreMod.MOD_ID);
+    public static final KeyMapping SHOW_QUESTS = new KeyMapping(buildKey("show_task"), GLFW.GLFW_KEY_J, "key.categories." + TCRCoreMod.MOD_ID);
 
 	public static String buildKey(String name){
 		return "key." + TCRCoreMod.MOD_ID + "." + name;
@@ -40,7 +40,7 @@ public class KeyMappings {
                         PacketRelay.sendToServer(TCRPacketHandler.INSTANCE, new ExecuteRiptidePacket());
                     }
                 }
-                while (SHOW_TASK.consumeClick()) {
+                while (SHOW_QUESTS.consumeClick()) {
                     Minecraft.getInstance().setScreen(new TCRQuestScreen());
                 }
 			}

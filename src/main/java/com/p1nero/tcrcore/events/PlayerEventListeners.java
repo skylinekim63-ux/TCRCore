@@ -22,7 +22,6 @@ import com.p1nero.tcrcore.save_data.TCRDimSaveData;
 import com.p1nero.tcrcore.utils.ItemUtil;
 import com.p1nero.tcrcore.utils.WorldUtil;
 import com.p1nero.tcrcore.worldgen.TCRDimensions;
-import com.p1nero.tudigong.entity.XianQiEntity;
 import com.p1nero.tudigong.item.TDGItems;
 import com.yesman.epicskills.registry.entry.EpicSkillsItems;
 import com.yesman.epicskills.registry.entry.EpicSkillsSkillTrees;
@@ -118,7 +117,7 @@ public class PlayerEventListeners {
             }
 
             if (namespace.equals("minecraft") && path.equals("recipes/transportation/oak_boat")) {
-                PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(4), player);
+                PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(PlayTitlePacket.RIPTIDE_TUTORIAL), player);
             }
 
         }

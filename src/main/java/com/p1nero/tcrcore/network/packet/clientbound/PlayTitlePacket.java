@@ -2,7 +2,7 @@ package com.p1nero.tcrcore.network.packet.clientbound;
 
 import com.p1nero.dialog_lib.network.packet.BasePacket;
 import com.p1nero.tcrcore.TCRCoreMod;
-import com.p1nero.tcrcore.client.KeyMappings;
+import com.p1nero.tcrcore.client.TCRKeyMappings;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
@@ -10,6 +10,11 @@ import net.minecraft.world.entity.player.Player;
 import yesman.epicfight.client.input.EpicFightKeyMappings;
 
 public record PlayTitlePacket(int id) implements BasePacket {
+
+    public static final int DODGE_TUTORIAL = 1;
+    public static final int PARRY_TUTORIAL = 2;
+    public static final int LOCK_TUTORIAL = 3;
+    public static final int RIPTIDE_TUTORIAL = 4;
 
     @Override
     public void encode(FriendlyByteBuf buf) {
@@ -24,20 +29,20 @@ public record PlayTitlePacket(int id) implements BasePacket {
     public void execute(Player player) {
         if(Minecraft.getInstance().player != null && Minecraft.getInstance().level != null){
             switch (id) {
-                case 1 -> {
+                case DODGE_TUTORIAL -> {
                     Minecraft.getInstance().gui.setTitle(TCRCoreMod.getInfo("dodge_tutorial", EpicFightKeyMappings.DODGE.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD)));
                     Minecraft.getInstance().gui.setSubtitle(TCRCoreMod.getInfo("perfect_dodge_tutorial"));
                 }
-                case 2 -> {
+                case PARRY_TUTORIAL -> {
                     Minecraft.getInstance().gui.setTitle(TCRCoreMod.getInfo("parry_tutorial", EpicFightKeyMappings.GUARD.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD)));
                     Minecraft.getInstance().gui.setSubtitle(TCRCoreMod.getInfo("perfect_parry_tutorial"));
                 }
-                case 3 -> {
+                case LOCK_TUTORIAL -> {
                     Minecraft.getInstance().gui.setTitle(TCRCoreMod.getInfo("lock_tutorial", EpicFightKeyMappings.LOCK_ON.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD)));
                     Minecraft.getInstance().gui.setSubtitle(TCRCoreMod.getInfo("lock_tutorial_sub"));
                 }
-                case 4 -> {
-                    Minecraft.getInstance().gui.setTitle(TCRCoreMod.getInfo("riptide_tutorial", KeyMappings.RIPTIDE.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD)));
+                case RIPTIDE_TUTORIAL -> {
+                    Minecraft.getInstance().gui.setTitle(TCRCoreMod.getInfo("riptide_tutorial", TCRKeyMappings.RIPTIDE.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD)));
                 }
             }
         }
