@@ -3,6 +3,7 @@ package com.p1nero.tcrcore.network.packet.clientbound.helper;
 import com.p1nero.fast_tpa.network.PacketRelay;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
 import com.p1nero.tcrcore.capability.TCRCapabilityProvider;
+import com.p1nero.tcrcore.client.gui.dialog.StartScreenHandler;
 import com.p1nero.tcrcore.client.gui.screen.TCREndScreen;
 import com.p1nero.tcrcore.network.TCRPacketHandler;
 import com.p1nero.tcrcore.network.packet.serverbound.EndScreenCallbackPacket;
@@ -65,6 +66,12 @@ public class TCRClientHandler {
                 Minecraft.getInstance().player.connection.send(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.PERFORM_RESPAWN));
                 Minecraft.getInstance().setScreen(null);
             }));
+        }
+    }
+
+    public static void openStartScreen(){
+        if(Minecraft.getInstance().player != null) {
+            StartScreenHandler.addScreen();
         }
     }
 

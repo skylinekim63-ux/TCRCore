@@ -4,6 +4,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -116,10 +117,7 @@ public class TCRQuestManager {
             return TCRQuestManager.hasFinished(serverPlayer, this);
         }
 
-        public void setIcon(ResourceLocation icon) {
-            this.icon = icon;
-        }
-
+        @Nullable
         public ResourceLocation getIcon() {
             return icon;
         }
@@ -142,6 +140,11 @@ public class TCRQuestManager {
 
         public int getId() {
             return id;
+        }
+
+        public Quest withIcon(ResourceLocation icon) {
+            this.icon = icon;
+            return this;
         }
 
         @Override

@@ -38,6 +38,7 @@ public class TCRPacketHandler {
         register(ExecuteRiptidePacket.class, ExecuteRiptidePacket::decode);
 
         register(OpenEndScreenPacket.class, OpenEndScreenPacket::decode);
+        register(OpenStartScreenPacket.class, OpenStartScreenPacket::decode);
         register(PlayItemPickupParticlePacket.class, PlayItemPickupParticlePacket::decode);
         register(OpenBanPortalScreenPacket.class, OpenBanPortalScreenPacket::decode);
     }

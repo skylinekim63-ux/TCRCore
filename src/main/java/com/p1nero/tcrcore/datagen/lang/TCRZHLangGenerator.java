@@ -8,6 +8,7 @@ import com.p1nero.tcrcore.block.TCRBlocks;
 import com.p1nero.tcrcore.capability.TCRQuestManager;
 import com.p1nero.tcrcore.client.KeyMappings;
 import com.p1nero.tcrcore.client.gui.dialog.BanPortalScreenHandler;
+import com.p1nero.tcrcore.client.gui.dialog.StartScreenHandler;
 import com.p1nero.tcrcore.effect.TCREffects;
 import com.p1nero.tcrcore.entity.TCREntities;
 import com.p1nero.tcrcore.item.TCRItems;
@@ -30,10 +31,6 @@ public class    TCRZHLangGenerator extends TCRLangProvider {
     @Override
     protected void addTranslations() {
 
-        this.addQuest(TCRQuestManager.KILL_PILLAGER, "杀死掠夺者", "杀死掠夺者", "前往主世界杀死掠夺者");
-        this.addQuest(TCRQuestManager.FIND_GODNESS_STATUE, "寻找女神像", "寻找女神像", "寻找女神像啊吧啊吧");
-        this.addQuest(TCRQuestManager.BACK_TO_KEEPER, "测试111", "测试111", "测试111222222完整的超绝超长描述");
-
         this.addEffect(TCREffects.INVULNERABLE, "无敌");
         this.addEffect(TCREffects.SOUL_INCINERATOR, "灵魂火");
 
@@ -41,6 +38,8 @@ public class    TCRZHLangGenerator extends TCRLangProvider {
         this.add("epicfight.skill_slot.passive5", "被动5");
         this.add("travelerstitles.tcrcore.sanctum", "梦之领域");
         this.addBiome(TCRBiomes.AIR, "虚无之地");
+
+        StartScreenHandler.onGenerateZH(this);
 
         this.addTCRItemInfo(net.blay09.mods.waystones.item.ModItems.warpStone, "点击物品栏中的传送卷轴按钮以进行传送。");
         this.addTCRItemInfo("§c警告！此物品可能导致重要道具被吸入背包而失效！", net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.ADVANCED_MAGNET_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.MAGNET_UPGRADE.get(), net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.PICKUP_UPGRADE.get());

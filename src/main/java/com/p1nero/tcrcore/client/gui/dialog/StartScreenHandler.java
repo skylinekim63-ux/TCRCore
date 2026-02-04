@@ -1,0 +1,47 @@
+package com.p1nero.tcrcore.client.gui.dialog;
+
+import com.p1nero.dialog_lib.client.screen.builder.StreamDialogueScreenBuilder;
+import com.p1nero.tcrcore.TCRCoreMod;
+import com.p1nero.tcrcore.datagen.lang.TCRLangProvider;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.chat.Component;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+
+@OnlyIn(Dist.CLIENT)
+public class StartScreenHandler {
+    public static final String name = "start_screen";
+
+    public static void addScreen() {
+        ScreenDialogueBuilder builder = new ScreenDialogueBuilder(TCRCoreMod.MOD_ID, name);
+        LocalPlayer localPlayer = Minecraft.getInstance().player;
+        if(localPlayer == null) {
+            return;
+        }
+        StreamDialogueScreenBuilder screenBuilder = new StreamDialogueScreenBuilder(Component.literal("")
+                .append(localPlayer.getDisplayName().copy().withStyle(ChatFormatting.AQUA)).append(": \n"), "", TCRCoreMod.MOD_ID);
+
+        screenBuilder.start(builder.ans(0))
+                        .addOption(builder.opt(0), builder.ans(1))
+                                .addFinalOption(builder.opt(1));
+
+        Minecraft.getInstance().setScreen(screenBuilder.build());
+    }
+
+    public static void onGenerateZH(TCRLangProvider generator) {
+        generator.addScreenAns(name, 0, "安！安！（你的嘴里不停地念着这个名字）");
+        generator.addScreenOpt(name, 0, "继续");
+        generator.addScreenAns(name, 1, "这是什么地方？好大的圣殿！先进去看看吧，说不定安在里面等我");
+        generator.addScreenOpt(name, 1, "进入圣殿");
+    }
+
+    public static void onGenerateEN(TCRLangProvider generator) {
+        generator.addScreenAns(name, 0, "Aine! Aine! (You keep repeating this name over and over.)");
+        generator.addScreenOpt(name, 0, "Continue");
+        generator.addScreenAns(name, 0, "What is this place? Such a grand sanctuary! Let’s go inside and take a look—maybe Aine is waiting for me in there.");
+        generator.addScreenOpt(name, 0, "Enter the Sanctuary");
+    }
+
+}

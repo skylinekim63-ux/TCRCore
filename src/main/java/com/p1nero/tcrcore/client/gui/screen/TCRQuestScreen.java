@@ -25,7 +25,7 @@ public class TCRQuestScreen extends Screen {
 
     private LocalPlayer player;
 
-    public static final ResourceLocation TASK_ICON = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/task_icon.png");
+    public static final ResourceLocation TASK_ICON_TEXTURE = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/task_icon.png");
 
     private static final int LIST_WIDTH = 220;
     private static final int LIST_MARGIN_VERTICAL = 24;
@@ -193,7 +193,8 @@ public class TCRQuestScreen extends Screen {
         }
         int iconX = left + ENTRY_PADDING;
         int iconY = top + ENTRY_PADDING;
-        guiGraphics.blit(TASK_ICON, iconX, iconY, 0, 0, ICON_SIZE, ICON_SIZE, ICON_SIZE, ICON_SIZE);
+        ResourceLocation currentIcon = quest.getIcon() == null ? TASK_ICON_TEXTURE : quest.getIcon();
+        guiGraphics.blit(currentIcon, iconX, iconY, 0, 0, ICON_SIZE, ICON_SIZE, ICON_SIZE, ICON_SIZE);
         int textX = iconX + ICON_SIZE + ENTRY_PADDING;
         int textY = top + ENTRY_PADDING;
         int titleColor = selected ? 0xFFFFE070 : 0xFFFFFFFF;

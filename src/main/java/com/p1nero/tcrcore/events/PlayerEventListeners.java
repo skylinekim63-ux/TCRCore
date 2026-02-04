@@ -15,6 +15,7 @@ import com.p1nero.tcrcore.effect.TCREffects;
 import com.p1nero.tcrcore.item.TCRItems;
 import com.p1nero.tcrcore.network.TCRPacketHandler;
 import com.p1nero.tcrcore.network.packet.clientbound.CSTipPacket;
+import com.p1nero.tcrcore.network.packet.clientbound.OpenStartScreenPacket;
 import com.p1nero.tcrcore.network.packet.clientbound.PlayItemPickupParticlePacket;
 import com.p1nero.tcrcore.network.packet.clientbound.PlayTitlePacket;
 import com.p1nero.tcrcore.save_data.TCRDimSaveData;
@@ -142,13 +143,6 @@ public class PlayerEventListeners {
                     skillTreeProgression.unlockNode(EpicSkillsSkillTrees.BATTLEBORN, EFNSkills.EFN_DODGE_STEP, finalServerPlayer);
                     skillTreeProgression.unlockNode(dpr, DPRSkills.STAMINA1, finalServerPlayer);
                 });
-//                CommandSourceStack commandSourceStack = serverPlayer.createCommandSourceStack().withPermission(2).withSuppressedOutput();
-//                Objects.requireNonNull(serverPlayer.getServer()).getCommands().performPrefixedCommand(commandSourceStack, "/skilltree unlock @s epicskills:battleborn efn:efn_step true");
-//                Objects.requireNonNull(serverPlayer.getServer()).getCommands().performPrefixedCommand(commandSourceStack, "/skilltree unlock @s epicskills:battleborn efn:efn_dodge true");
-//                Objects.requireNonNull(serverPlayer.getServer()).getCommands().performPrefixedCommand(commandSourceStack, "/skilltree unlock @s dodge_parry_reward:passive dodge_parry_reward:stamina1 true");
-//                Objects.requireNonNull(serverPlayer.getServer()).getCommands().performPrefixedCommand(commandSourceStack, "/epicfight skill add @s dodge efn:efn_dodge");
-//                Objects.requireNonNull(serverPlayer.getServer()).getCommands().performPrefixedCommand(commandSourceStack, "/epicfight skill add @s guard efn:efn_parry");
-//                Objects.requireNonNull(serverPlayer.getServer()).getCommands().performPrefixedCommand(commandSourceStack, "/epicfight skill add @s passive1 dodge_parry_reward:stamina1");
                 addSkill(serverPlayer, EFNSkills.EFN_DODGE_ROLL, SkillSlots.DODGE);
                 addSkill(serverPlayer, EFNSkills.EFN_PARRY, SkillSlots.GUARD);
                 addSkill(serverPlayer, DPRSkills.STAMINA1, SkillSlots.PASSIVE1);
@@ -159,10 +153,9 @@ public class PlayerEventListeners {
                 ItemUtil.addItem(serverPlayer, Items.BREAD, 32);
                 ItemUtil.addItem(serverPlayer, TDGItems.TUDI_COMMAND_SPELL.get(), 1);
                 ItemUtil.addItem(serverPlayer, EpicSkillsItems.ABILIITY_STONE.get(), 1);
-                //引导玩家去守望者处
-                XianQiEntity xianQiEntity = new XianQiEntity(serverPlayer.serverLevel(), WorldUtil.COL_GUIDER_POS, serverPlayer, null);
-                serverPlayer.displayClientMessage(TCRCoreMod.getInfo("cloud_follow_me"), false);
-                serverPlayer.serverLevel().addFreshEntity(xianQiEntity);
+
+                PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new OpenStartScreenPacket(), serverPlayer);
+
                 PlayerDataManager.firstJoint.put(serverPlayer, true);
             }
 

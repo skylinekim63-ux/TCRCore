@@ -4,6 +4,7 @@ import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.p1nero.tcrcore.TCRClientConfig;
 import com.p1nero.tcrcore.TCRCoreMod;
+import com.p1nero.tcrcore.capability.PlayerDataManager;
 import com.p1nero.tcrcore.capability.TCRQuestManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -27,7 +28,8 @@ public class CustomQuestRenderer {
     private static int textY;
     private static long timeSinceStateChange;
     public static final ResourceLocation TASK_ICON = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/task_icon.png");
-
+    private static TCRQuestManager.Quest currentQuest;
+    private static ResourceLocation currentQuestIcon;
     public static void tick(LocalPlayer localPlayer) {
         Minecraft minecraft = Minecraft.getInstance();
         Window window = minecraft.getWindow();
@@ -41,7 +43,11 @@ public class CustomQuestRenderer {
         }
         if (hasTask) {
             // Update task description when task appears
-            lastQuestShortDesc = TCRQuestManager.getCurrentQuestShortDesc(localPlayer);
+
+            int id = PlayerDataManager.currentQuestId.getInt(localPlayer);
+            currentQuest = TCRQuestManager.getQuestById(id);
+            lastQuestShortDesc = currentQuest.getShortDesc();
+            currentQuestIcon = currentQuest.getIcon();
         }
 
         lastHasTask = hasTask;
@@ -87,7 +93,9 @@ public class CustomQuestRenderer {
 
         // Draw icon (16x16)
         guiGraphics.setColor(1.0f, 1.0f, 1.0f, alpha);
-        guiGraphics.blit(TASK_ICON, x, y, 0, 0, 16, 16, 16, 16);
+
+        ResourceLocation icon = currentQuestIcon == null ? TASK_ICON : currentQuestIcon;
+        guiGraphics.blit(icon, x, y, 0, 0, 16, 16, 16, 16);
 
         // Draw text with shadow and alpha
         int textColor = (int) (alpha * 255) << 24 | 0xFFFFFF; // White text with alpha

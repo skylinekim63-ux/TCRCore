@@ -1,15 +1,20 @@
-package com.p1nero.tcrcore.events;
+package com.p1nero.tcrcore.dialog;
 
 import com.p1nero.dialog_lib.events.ServerCustomInteractEvent;
 import com.p1nero.dialog_lib.events.ServerNpcEntityInteractEvent;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.capability.TCRCapabilityProvider;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.Objects;
+
 @Mod.EventBusSubscriber(modid = TCRCoreMod.MOD_ID)
-public class DialogEvents {
+public class CustomDialogHandler {
+
+    public static final int ON_START_SCREEN = 1;
 
     @SubscribeEvent
     public static void onLivingDialog(ServerNpcEntityInteractEvent event) {
@@ -20,7 +25,11 @@ public class DialogEvents {
 
     @SubscribeEvent
     public static void onCustomDialog(ServerCustomInteractEvent event) {
+        if(Objects.equals(event.getModId(), TCRCoreMod.MOD_ID)) {
+            ServerPlayer serverPlayer = event.getServerPlayer();
 
+
+        }
     }
 
 }
