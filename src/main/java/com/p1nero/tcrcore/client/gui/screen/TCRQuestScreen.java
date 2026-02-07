@@ -26,7 +26,7 @@ public class TCRQuestScreen extends Screen {
     private static TCRQuestManager.Quest selectedQuest; // 当前真正追踪的任务
     private static TCRQuestManager.Quest uiSelectedQuest; // UI 中当前高亮的任务
 
-    private LocalPlayer player;
+    private final LocalPlayer player;
 
     public static final ResourceLocation TASK_ICON_TEXTURE = ResourceLocation.fromNamespaceAndPath(TCRCoreMod.MOD_ID, "textures/gui/task_icon.png");
 

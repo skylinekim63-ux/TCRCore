@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class CustomQuestOverlayRenderer {
     private static long fadeStartTime = 0;
     private static boolean hasQuest = false;
-    private static boolean lastHasTask = false;
+    private static boolean lastHasQuest = false;
     private static float alpha = 0.0f;
     private static final int FADE_DURATION = 30; // 30 ticks = 1.5 seconds
     private static Component lastQuestShortDesc = Component.empty();
@@ -63,8 +63,14 @@ public class CustomQuestOverlayRenderer {
         String distanceText;
     }
 
-    public static void tick(LocalPlayer localPlayer) {
+    public static void tick() {
         Minecraft minecraft = Minecraft.getInstance();
+        LocalPlayer localPlayer = minecraft.player;
+        if(localPlayer == null || minecraft.level == null) {
+            lastHasQuest = false;
+            hasQuest = false;
+            return;
+        }
         Window window = minecraft.getWindow();
         long currentTime = localPlayer.level().getGameTime();
         // Calculate alpha based on game time with partialTick interpolation
@@ -72,7 +78,7 @@ public class CustomQuestOverlayRenderer {
         hasQuest = TCRQuestManager.hasQuest(localPlayer);
         hintText = TCRCoreMod.getInfo("press_to_show_quest_ui", TCRKeyMappings.SHOW_QUESTS.getTranslatedKeyMessage().copy().withStyle(ChatFormatting.GOLD));
         // Handle state changes
-        if (hasQuest != lastHasTask) {
+        if (hasQuest != lastHasQuest) {
             fadeStartTime = currentTime;
         }
         if (hasQuest) {
@@ -81,7 +87,7 @@ public class CustomQuestOverlayRenderer {
             currentQuestIcon = currentQuest.getIcon();
         }
 
-        lastHasTask = hasQuest;
+        lastHasQuest = hasQuest;
 
         // Calculate position (golden ratio - left side, about 38.2% from top)
         int screenHeight = window.getGuiScaledHeight();
@@ -374,7 +380,7 @@ public class CustomQuestOverlayRenderer {
         fadeStartTime = 0;
         alpha = 0.0f;
         hasQuest = false;
-        lastHasTask = false;
+        lastHasQuest = false;
         lastQuestShortDesc = Component.empty();
     }
 }

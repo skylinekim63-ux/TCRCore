@@ -18,7 +18,7 @@ public class TCRQuests {
         TALK_TO_AINE_1 = TCRQuestManager.create("talk_to_aine_1")
                 .shortDescParam(TCREntities.AINE_IRIS.get().getDescription())
                 .descParam(TCREntities.AINE_IRIS.get().getDescription(), TCREntities.AINE_IRIS.get().getDescription())
-                .withTrackingPos(new BlockPos(WorldUtil.AINE_POS.above(4)), TCRDimensions.SANCTUM_LEVEL_KEY);
+                .withTrackingPos(new BlockPos(WorldUtil.AINE_POS.above(2)), TCRDimensions.SANCTUM_LEVEL_KEY);
         TALK_TO_CHRONOS_1 = TCRQuestManager.create("talk_to_col_1")
                 .descParam(TCREntities.AINE_IRIS.get().getDescription(), TCREntities.AINE_IRIS.get().getDescription())
                 .withTrackingPos(new BlockPos(WorldUtil.CHRONOS_SOL_BLOCK_POS.above(4)), TCRDimensions.SANCTUM_LEVEL_KEY);

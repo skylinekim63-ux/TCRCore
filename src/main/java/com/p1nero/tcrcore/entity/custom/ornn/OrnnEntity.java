@@ -20,6 +20,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
@@ -35,6 +36,7 @@ import net.minecraft.world.item.trading.Merchant;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
@@ -109,6 +111,8 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
                     .addLeaf(dBuilder.opt(8), 6)
                     .addLeaf(dBuilder.opt(9), 7);
 
+            root.addChild(whoAreU);
+
             if(PlayerDataManager.chonosTalked.get(localPlayer)) {
                 root.addChild(aboutChronos);
             }
@@ -116,7 +120,7 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
                 root.addChild(aboutFerryGirl);
             }
 
-            root.addChild(whoAreU)
+            root.addChild(smithHelp)
                     .addChild(firstMeetGift);
         } else {
             if(PlayerDataManager.chonosTalked.get(localPlayer)) {
@@ -134,8 +138,9 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
     @Override
     public void handleNpcInteraction(ServerPlayer serverPlayer, int i) {
         if(i == 1) {
-            serverPlayer.openMenu(new SimpleMenuProvider((p_277304_, p_277305_, p_277306_) ->
-                    new SmithingMenu(p_277304_, p_277305_, ContainerLevelAccess.create(serverPlayer.level(), this.getOnPos())), Component.translatable("container.upgrade")));
+            BlockState blockState = serverPlayer.level().getBlockState(WorldUtil.SMITH_BLOCK_POS);
+            serverPlayer.openMenu(blockState.getMenuProvider(serverPlayer.level(), WorldUtil.SMITH_BLOCK_POS));
+            serverPlayer.awardStat(Stats.INTERACT_WITH_SMITHING_TABLE);
         }
 
         if(i == 2) {

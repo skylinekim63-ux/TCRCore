@@ -30,7 +30,7 @@ public class TCRZHLangGenerator extends TCRLangProvider {
     @Override
     protected void addTranslations() {
 
-        this.addQuest(TCRQuests.TALK_TO_AINE_1, "序章", "和%s对话", "和%s说好了一起来到这个世界，但是当你回过神来后%s已经找不着人影了，快去圣殿里找找她吧！");
+        this.addQuest(TCRQuests.TALK_TO_AINE_1, "序章", "和%s对话", "和%s说好了一起来到这个世界，但是当你回过神来后%s已经找不着人影了，快去圣殿里找找她吧！你依稀记得她好像说有什么新时装要给你。");
         this.addQuest(TCRQuests.TALK_TO_CHRONOS_1, "序章", "和？对话", "和%s说好了一起来到这个世界，但是当你回过神来后%s已经找不着人影了。这里到底是什么地方？和圣殿长廊中那位端庄的女人交流看看吧！");
         this.addQuest(TCRQuests.TALK_TO_FERRY_GIRL_1, "序章", "和%s对话", "你已经听说了这个世界的故事，准备好了就前往码头寻找 %s 吧！她将为我们打开前往Overworld的路！");
         this.addQuest(TCRQuests.TALK_TO_ORNN_1, "序章", "和%s对话", "在%s的建议下，先去武库找%s武装一下我们自己吧！充分的武装才能保证我们顺利的冒险！");
