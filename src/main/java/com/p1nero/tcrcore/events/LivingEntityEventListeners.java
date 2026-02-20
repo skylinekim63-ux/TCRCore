@@ -1,9 +1,6 @@
 package com.p1nero.tcrcore.events;
 
-import com.brass_amber.ba_bt.entity.hostile.golem.CoreGolem;
-import com.brass_amber.ba_bt.entity.hostile.golem.LandGolem;
-import com.brass_amber.ba_bt.entity.hostile.golem.NetherGolem;
-import com.brass_amber.ba_bt.entity.hostile.golem.OceanGolem;
+import com.brass_amber.ba_bt.entity.hostile.golem.*;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity;
 import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity;
@@ -145,7 +142,8 @@ public class LivingEntityEventListeners {
         LivingEntity entity = event.getEntity();
         if (!entity.level().isClientSide) {
 
-            if (entity instanceof IronGolem ironGolem && WorldUtil.isInStructure(ironGolem, WorldUtil.SKY_ISLAND)) {
+            if (entity instanceof IronGolem ironGolem && WorldUtil.isInStructure(ironGolem, WorldUtil.SKY_GOLEM)) {
+                ItemUtil.addItemEntity(entity, TCRItems.DIVINE_FRAGMENT.get(), 1, ChatFormatting.AQUA.getColor());
                 event.setCanceled(true);
             }
 
@@ -286,6 +284,13 @@ public class LivingEntityEventListeners {
                 if (!PlayerDataManager.mechEyeGotten.get(player)) {
                     ItemUtil.addItemEntity(player, ModItems.MECH_EYE.get(), 1, ChatFormatting.GOLD.getColor().intValue());
                     ItemUtil.addItemEntity(player, TCRItems.WITHER_SOUL_STONE.get(), 1, ChatFormatting.GOLD.getColor().intValue());
+                    player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
+                }
+            }
+
+            if (livingEntity instanceof SkyGolem) {
+                if (!PlayerDataManager.stormEyeGotten.get(player)) {
+                    ItemUtil.addItemEntity(player, ModItems.STORM_EYE.get(), 1, ChatFormatting.AQUA.getColor().intValue());
                     player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
                 }
             }

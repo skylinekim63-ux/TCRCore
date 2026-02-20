@@ -82,7 +82,7 @@ public class TCRItems {
                     TCRQuestManager.hasQuest(serverPlayer, TCRQuests.USE_NETHER_RESONANCE_STONE),
                     ((pos, serverPlayer) ->
                     {
-                        WaypointUtil.sendWaypoint(serverPlayer, "eye_pos_mark", TCRCoreMod.getInfo("eye_pos_mark", ModItems.MONSTROUS_EYE.get().getDescription(), Component.translatable("structure.nightfall_invade.gate_of_disaster")), pos, WaypointColor.DARK_RED);
+                        WaypointUtil.sendWaypoint(serverPlayer, "eye_pos_mark", TCRCoreMod.getInfo("eye_pos_mark", ModItems.MONSTROUS_EYE.get().getDescription(), Component.translatable("structure.tcrcore.gate_of_disaster")), pos, WaypointColor.DARK_RED);
                         TCRQuests.USE_NETHER_RESONANCE_STONE.finish(serverPlayer, true);
                         TCRQuests.GET_MONST_EYE.start(serverPlayer);
                     }))
@@ -106,6 +106,8 @@ public class TCRItems {
     public static final RegistryObject<Item> WITHER_SOUL_STONE = REGISTRY.register("wither_soul_stone", () -> new SimpleDescriptionItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), true));
 
     public static final RegistryObject<Item> WITHER_SOUL_STONE_ACTIVATED = REGISTRY.register("wither_soul_stone_activated", () -> new WitherSoulStoneItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
+
+    public static final RegistryObject<Item> DIVINE_FRAGMENT = REGISTRY.register("divine_fragment", () -> new SimpleDescriptionItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(), true));
 
     public static final RegistryObject<Item> MAGIC_BOTTLE = REGISTRY.register("magic_bottle", () -> new BlueBottle(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
 

@@ -4,7 +4,7 @@
   "start_pool": "nightfall_invade:gate_of_disaster/start_pool",
   "size": 3,
   "max_distance_from_center": 256,
-  "biomes": "#nightfall_invade:has_structure/gate_of_disaster",
+  "biomes": "#tcrcore:has_structure/gate_of_disaster",
   "step": "surface_structures",
   "start_height": {
     "absolute": -3

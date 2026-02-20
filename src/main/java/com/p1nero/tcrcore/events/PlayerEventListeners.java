@@ -578,6 +578,11 @@ public class PlayerEventListeners {
                 TCRQuests.TALK_TO_ORNN_1.start(player, true);
             }
 
+            //标记为知道真相
+            if(itemStack.is(TCRItems.DIVINE_FRAGMENT.get()) && !PlayerDataManager.divineFragmentGotten.get(player)) {
+                PlayerDataManager.divineFragmentGotten.put(player, true);
+            }
+
         }
 
     }

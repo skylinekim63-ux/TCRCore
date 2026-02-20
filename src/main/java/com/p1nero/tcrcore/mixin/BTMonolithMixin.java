@@ -1,7 +1,6 @@
 package com.p1nero.tcrcore.mixin;
 
 import com.brass_amber.ba_bt.entity.block.BTMonolith;
-import com.brass_amber.ba_bt.init.BTEntityType;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -17,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- *  取消前置眼睛限制
+ *  简化为一个钥匙即可
  */
 @Mixin(value = BTMonolith.class)
 public abstract class BTMonolithMixin extends Entity {
@@ -34,10 +33,11 @@ public abstract class BTMonolithMixin extends Entity {
     public abstract int getKeyCountInEntity();
 
     @Shadow(remap = false)
-    protected abstract void increaseKeyCount(Player player, InteractionHand hand);
-
-    @Shadow(remap = false)
     public abstract void setEyeSlotDisplayed();
+
+    @Shadow(remap = false) public abstract void setKeyCountInEntity(int count);
+
+    @Shadow(remap = false) protected abstract void playKeyInteractionSound();
 
     public BTMonolithMixin(EntityType<?> p_19870_, Level p_19871_) {
         super(p_19870_, p_19871_);
@@ -48,16 +48,13 @@ public abstract class BTMonolithMixin extends Entity {
         if (this.monolithType != null) {
             Item itemInHand = player.getItemInHand(hand).getItem();
             if (itemInHand.equals(this.correctMonolithKey)) {
-                int keysNeeded = this.monolithType.equals(BTEntityType.LAND_MONOLITH.get()) ? 3 : 2;
-                if (this.getKeyCountInEntity() < keysNeeded) {
-                    this.setEyeSlotDisplayed();
-                    if(!this.monolithType.equals(BTEntityType.LAND_MONOLITH.get()) && this.getKeyCountInEntity() == 1) {
-                        this.increaseKeyCount(player, hand);
-                    }
-                    this.increaseKeyCount(player, hand);
-                    this.increaseKeyCount(player, hand);//简化为用一个钥匙就好，以防漏钥匙= =
-                    cir.setReturnValue(InteractionResult.sidedSuccess(this.getCommandSenderWorld().isClientSide()));
+                this.setKeyCountInEntity(3);
+                this.playKeyInteractionSound();
+                if (!player.isCreative()) {
+                    player.getItemInHand(hand).shrink(1);
                 }
+                this.setEyeSlotDisplayed();
+                cir.setReturnValue(InteractionResult.sidedSuccess(this.getCommandSenderWorld().isClientSide()));
             }
         }
         cir.setReturnValue(super.interact(player, hand));
