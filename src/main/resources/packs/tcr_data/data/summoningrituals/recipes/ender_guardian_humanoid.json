@@ -16,8 +16,6 @@
         { "ingredient": { "item": "cataclysm:void_stone" }, "count": 1 },
         { "ingredient": { "item": "minecraft:purpur_block" }, "count": 16 }
     ],
-    "sacrifices": {
-    },
     "recipe_time": 200,
     "block_below": { "block": "minecraft:calcite" },
     "day_time": "any",

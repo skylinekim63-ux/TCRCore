@@ -16,8 +16,6 @@
         { "ingredient": { "item": "create:electron_tube" }, "count": 3 },
         { "ingredient": { "item": "create:precision_mechanism" }, "count": 5 }
     ],
-    "sacrifices": {
-    },
     "recipe_time": 200,
     "block_below": { "block": "minecraft:calcite" },
     "day_time": "any",

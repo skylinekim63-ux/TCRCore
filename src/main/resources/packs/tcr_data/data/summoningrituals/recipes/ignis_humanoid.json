@@ -17,8 +17,6 @@
         { "ingredient": { "item": "create:blaze_cake" }, "count": 1 },
         { "ingredient": { "item": "bosses_of_mass_destruction:blazing_eye" }, "count": 1 }
     ],
-    "sacrifices": {
-    },
     "recipe_time": 200,
     "block_below": { "block": "minecraft:calcite" },
     "day_time": "any",

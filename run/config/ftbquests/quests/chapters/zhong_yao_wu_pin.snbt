@@ -5,7 +5,7 @@
 	group: ""
 	icon: "tcrcore:ancient_oracle_fragment"
 	id: "252FC81556BE3D4B"
-	order_index: 6
+	order_index: 1
 	quest_links: [ ]
 	quests: [
 		{

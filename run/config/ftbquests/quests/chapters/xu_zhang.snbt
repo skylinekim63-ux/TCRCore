@@ -3,7 +3,13 @@
 	default_quest_shape: ""
 	filename: "xu_zhang"
 	group: ""
-	icon: "minecraft:paper"
+	icon: {
+		Count: 1
+		id: "minecraft:writable_book"
+		tag: {
+			fdbosses: { }
+		}
+	}
 	id: "16AFC8ED236C979B"
 	images: [{
 		height: 9.0d
@@ -15,62 +21,84 @@
 	}]
 	order_index: 0
 	quest_links: [ ]
-	quests: [{
-		description: [
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description1}"
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description2}"
-			""
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description3}"
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description4}"
-			""
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description5}"
-			""
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description6}"
-			""
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description7}"
-			""
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description8}"
-			""
-			""
-			""
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description9}"
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description10}"
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description11}"
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description12}"
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description13}"
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description14}"
-			""
-			"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description15}"
-		]
-		icon: "cataclysm:strange_key"
-		icon_scale: 2.0d
-		id: "09DE1A548EA3F9BA"
-		rewards: [{
-			id: "146096142779186D"
-			item: "minecraft:enchanted_golden_apple"
-			type: "item"
-		}]
-		subtitle: "{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.subtitle}"
-		tasks: [
-			{
-				id: "2D345FFDC7FE02E5"
-				title: "{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.task.3257333974082388709.title}"
-				type: "checkmark"
-			}
-			{
-				id: "0485138C7C9054EA"
-				title: "{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.task.325688042160411882.title}"
-				type: "checkmark"
-			}
-			{
+	quests: [
+		{
+			description: [
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description1}"
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description2}"
+				""
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description3}"
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description4}"
+				""
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description5}"
+				""
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description6}"
+				""
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description7}"
+				""
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description8}"
+				""
+				""
+				""
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description9}"
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description10}"
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description11}"
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description12}"
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description13}"
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description14}"
+				""
+				"{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.description15}"
+			]
+			icon: "cataclysm:strange_key"
+			icon_scale: 2.0d
+			id: "09DE1A548EA3F9BA"
+			rewards: [{
+				id: "00CFBCF68BF19DED"
+				type: "xp"
+				xp: 1
+			}]
+			subtitle: "{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.subtitle}"
+			tasks: [{
 				id: "7A35FB5FAB5EC5CC"
 				title: "{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.task.8806221034708452812.title}"
 				type: "checkmark"
+			}]
+			title: "{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.title}"
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			description: [
+				"{ftbquests.chapter.5A7C68B10CEA5C38.quest7487272814909384521.description1}"
+				""
+				"{ftbquests.chapter.5A7C68B10CEA5C38.quest7487272814909384521.description2}"
+				""
+				""
+				"{ftbquests.chapter.5A7C68B10CEA5C38.quest7487272814909384521.description3}"
+			]
+			icon: {
+				Count: 1
+				id: "tcrcore:dragon_flute"
+				tag: {
+					fdbosses: { }
+				}
 			}
-		]
-		title: "{ftbquests.chapter.16AFC8ED236C979B.quest711034741643803066.title}"
-		x: 2.0d
-		y: 0.0d
-	}]
+			id: "67E822F4B51CE749"
+			rewards: [{
+				id: "33E3EFC36260F10F"
+				type: "xp"
+				xp: 1
+			}]
+			shape: "rsquare"
+			subtitle: "{ftbquests.chapter.5A7C68B10CEA5C38.quest7487272814909384521.subtitle}"
+			tasks: [{
+				id: "5293E10F1D65A447"
+				title: "{ftbquests.chapter.5A7C68B10CEA5C38.quest7487272814909384521.task.5950346987720516679.title}"
+				type: "checkmark"
+			}]
+			x: -2.5d
+			y: -3.0d
+		}
+	]
 	title: "{ftbquests.chapter.16AFC8ED236C979B.title}"
 }

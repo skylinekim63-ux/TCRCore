@@ -17,8 +17,6 @@
         { "ingredient": { "item": "minecraft:crying_obsidian" }, "count": 8 },
         { "ingredient": { "item": "bosses_of_mass_destruction:obsidian_heart" }, "count": 1 }
     ],
-    "sacrifices": {
-    },
     "recipe_time": 200,
     "block_below": { "block": "minecraft:calcite" },
     "day_time": "any",
