@@ -189,7 +189,6 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.add(TCRItems.NETHER_RESONANCE_STONE.get(), "地狱共鸣石");
         this.add(TCRItems.SKY_RESONANCE_STONE.get(), "天域共鸣石");
         this.add(TCRItems.END_RESONANCE_STONE.get(), "终界共鸣石");
-        this.addInfo("resonance_stone_usage", "可与使徒封印的位置共鸣。");
         this.add(TCRItems.CORE_FLINT.get(), "炉心火石");
         this.addItemUsageInfo(TCRItems.CORE_FLINT.get(), "在黑曜石框架上使用，可打开地狱之门。");
         this.add(TCRItems.PROOF_OF_ADVENTURE.get(), "冒险之证");
@@ -208,6 +207,8 @@ public class TCRZHLangGenerator extends TCRLangProvider {
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "上面写着古老的神谕，暗示了火种散落的地方。回主城给守望者看看吧，说不定对冒险有帮助！");
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "§c多人模式请勿占据他人任务道具！每人都需各自提交！", 2);
 
+        this.addInfo("resonance_stone_usage", "可与使徒封印的位置共鸣。");
+        this.addInfo("resonance_search_failed", "错误：无法共鸣！请使用locate命令或结构指南针搜索[%s]");
         this.addInfo("yamato_skill_lock", "[%s]已锁定，需对应附魔书以解锁！");
         this.addInfo("congratulation", "恭喜！");
         this.addInfo("open_backpack_tutorial", "按下 [%s] 以打开随身空间");

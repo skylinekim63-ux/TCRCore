@@ -94,7 +94,6 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.add(TCRItems.NETHER_RESONANCE_STONE.get(), "Nether Resonance Stone");
         this.add(TCRItems.SKY_RESONANCE_STONE.get(), "Aether Resonance Stone");
         this.add(TCRItems.END_RESONANCE_STONE.get(), "End Resonance Stone");
-        this.addInfo("resonance_stone_usage", "Can resonate with the location of the Angel's seal");
         this.add(TCRItems.CORE_FLINT.get(), "Core Flint");
         this.addItemUsageInfo(TCRItems.CORE_FLINT.get(), "Use on an Obsidian Frame to open a Nether Portal.");
         this.add(TCRItems.PROOF_OF_ADVENTURE.get(), "Proof of Adventure");
@@ -113,6 +112,8 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "It bears an ancient oracle hinting at the locations of scattered embers. Show it to the The Sanctuary Keeper in the The Sanctuary; it might aid your adventure!");
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "§cIn multiplayer mode, do not occupy other players'! Everyone must submit their own!", 2);
 
+        this.addInfo("resonance_stone_usage", "Can resonate with the location of the Angel's seal");
+        this.addInfo("resonance_search_failed", "ERROR：Failed to Resonate！Please use locate command or structure compass to search [%s]");
         this.addInfo("yamato_skill_lock", "[%s] are locked. Requires special enchantment book to unlock!");
         this.addInfo("congratulation", "Congratulations!");
         this.addInfo("open_backpack_tutorial", "Press [%s] to view Backpack");

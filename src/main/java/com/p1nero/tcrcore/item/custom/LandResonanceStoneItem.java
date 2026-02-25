@@ -8,6 +8,7 @@ import com.p1nero.tcrcore.utils.WaypointUtil;
 import com.p1nero.tcrcore.utils.WorldUtil;
 import com.yesman.epicskills.registry.entry.EpicSkillsSounds;
 import it.unimi.dsi.fastutil.Pair;
+import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -53,6 +54,8 @@ public class LandResonanceStoneItem extends ResonanceStoneItem{
                         pos = WorldUtil.getNearbyStructurePos(serverPlayer, targetStructure.toString(), y);
                     } catch (Exception e) {
                         TCRCoreMod.LOGGER.error("TCRCore : Error finding structure [{}]: {}", targetStructure, e.getMessage());
+                        player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", targetStructure).withStyle(ChatFormatting.RED), false);
+                        callback.accept(pos, serverPlayer);
                     }
 
                     BlockPos pos1 = null;
@@ -61,6 +64,8 @@ public class LandResonanceStoneItem extends ResonanceStoneItem{
                         pos1 = WorldUtil.getNearbyStructurePos(serverPlayer.serverLevel(), pos, WorldUtil.BONE_CHIMERA_STRUCTURE, 130);
                     } catch (Exception e) {
                         TCRCoreMod.LOGGER.error("TCRCore : Error finding structure [{}]: {}", WorldUtil.BONE_CHIMERA_STRUCTURE, e.getMessage());
+                        player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", WorldUtil.BONE_CHIMERA_STRUCTURE).withStyle(ChatFormatting.RED), false);
+                        callback.accept(pos, serverPlayer);
                     }
                     return Pair.of(pos, pos1);
                 })
@@ -70,14 +75,18 @@ public class LandResonanceStoneItem extends ResonanceStoneItem{
                     if(pos != null) {
                         tcrPlayer.playDirectionParticle(player.getEyePosition(), new Vec3(pos.getX(), player.getEyeY(), pos.getZ()));
                         serverPlayer.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(EpicSkillsSounds.GAIN_ABILITY_POINTS.get()), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
-                        callback.accept(pos, serverPlayer);
+                    } else {
+                        player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", targetStructure).withStyle(ChatFormatting.RED), false);
                     }
                     BlockPos pos1 = posPair.second();
                     if(pos1 != null) {
                         tcrPlayer.playDirectionParticle(player.getEyePosition(), new Vec3(pos1.getX(), player.getEyeY(), pos1.getZ()));
                         WaypointUtil.sendWaypoint(serverPlayer, "bone_chimera_mark", Component.translatable(Util.makeDescriptionId("structure", ResourceLocation.parse(WorldUtil.BONE_CHIMERA_STRUCTURE))), pos1, WaypointColor.YELLOW);
-                        TCRQuests.BONE_CHIMERA_QUEST.start(serverPlayer, false);
+                    } else {
+                        player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", WorldUtil.BONE_CHIMERA_STRUCTURE).withStyle(ChatFormatting.RED), false);
                     }
+                    callback.accept(pos, serverPlayer);
+                    TCRQuests.BONE_CHIMERA_QUEST.start(serverPlayer, false);
                     //保险，俩都找到再消耗
                     if(pos != null && pos1 != null) {
                         itemStack.shrink(1);
