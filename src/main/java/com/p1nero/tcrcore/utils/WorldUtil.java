@@ -145,7 +145,7 @@ public class WorldUtil {
                 serverLevel,
                 structureSet,
                 playerPos,
-                20000,
+                500,
                 true//跳过已找？
         );
 

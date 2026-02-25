@@ -528,11 +528,10 @@ public class LivingEntityEventListeners {
             }
         }
 
-        //交给incontrol
-//        if (illegalEntityTypes.contains(event.getEntity().getType())) {
-//            event.setCanceled(true);
-//            return;
-//        }
+        if (illegalEntityTypes.contains(event.getEntity().getType())) {
+            event.setCanceled(true);
+            return;
+        }
 
         //移除远古守卫者在海洋塔的生成
         if (event.getEntity() instanceof Guardian guardian && WorldUtil.isInStructure(guardian, WorldUtil.OCEAN_GOLEM)) {
