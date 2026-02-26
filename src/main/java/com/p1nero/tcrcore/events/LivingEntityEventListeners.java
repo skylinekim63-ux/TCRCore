@@ -317,16 +317,14 @@ public class LivingEntityEventListeners {
                     FakeSkyGolem fakeSkyGolem = new FakeSkyGolem(player);
                     fakeSkyGolem.setPos(player.position());
                     player.serverLevel().addFreshEntity(fakeSkyGolem);
-                    TCRQuests.GET_STORM_EYE.finish(player, true);
                     TCRQuests.TALK_TO_SKY_GOLEM.start(player);
                 }
             }
 
             if(livingEntity instanceof FakeSkyGolem) {
-                if (TCRQuestManager.hasQuest(player, TCRQuests.GET_STORM_EYE) && TCRQuests.TALK_TO_SKY_GOLEM.isFinished(player)) {
+                if (TCRQuestManager.hasQuest(player, TCRQuests.GET_STORM_EYE) &&(TCRQuests.TALK_TO_SKY_GOLEM.isFinished(player) || TCRQuestManager.hasQuest(player, TCRQuests.TALK_TO_SKY_GOLEM))) {
                     ItemUtil.addItemEntity(player, ModItems.STORM_EYE.get(), 1, ChatFormatting.AQUA.getColor().intValue());
                     player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
-                    TCRQuests.GET_STORM_EYE.start(player);
                 }
             }
 
@@ -339,7 +337,7 @@ public class LivingEntityEventListeners {
             }
 
             if(livingEntity instanceof FakeEndGolem) {
-                if (TCRQuestManager.hasQuest(player, TCRQuests.GET_VOID_EYE) && TCRQuests.GO_TO_THE_END.isFinished(player)) {
+                if (TCRQuestManager.hasQuest(player, TCRQuests.GET_VOID_EYE) && (TCRQuests.GO_TO_THE_END.isFinished(player) || TCRQuestManager.hasQuest(player, TCRQuests.GO_TO_THE_END))) {
                     ItemUtil.addItemEntity(player, ModItems.VOID_EYE.get(), 1, ChatFormatting.LIGHT_PURPLE.getColor().intValue());
                     player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
                 }

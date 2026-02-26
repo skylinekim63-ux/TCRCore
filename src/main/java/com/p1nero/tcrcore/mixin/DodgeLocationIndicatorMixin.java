@@ -56,6 +56,7 @@ public abstract class DodgeLocationIndicatorMixin extends LivingEntity {
                     PECPacketRelay.sendToPlayer(PECPacketHandler.INSTANCE, new AddAvlEntityAfterImageParticle(serverPlayer.getId()), serverPlayer);
                     serverPlayerPatch.getOriginal().connection.send(new ClientboundSoundPacket(EpicFightSounds.ENTITY_MOVE.getHolder().orElseThrow(), SoundSource.PLAYERS, serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ(), 1.0F, 1.0F, serverPlayer.getRandom().nextInt()));
                 }
+                serverPlayerPatch.setStamina(serverPlayerPatch.getStamina() + 3);
             }
             if (!damageSource.is(EpicFightDamageTypeTags.BYPASS_DODGE)) {
                 this.entitypatch.onDodgeSuccess(damageSource, this.getBoundingBox().getCenter());

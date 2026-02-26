@@ -87,6 +87,7 @@ import yesman.epicfight.skill.SkillSlot;
 import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
+import yesman.epicfight.world.gamerule.EpicFightGameRules;
 
 import java.util.*;
 
@@ -140,7 +141,8 @@ public class PlayerEventListeners {
                 serverPlayer = (ServerPlayer) serverPlayer.changeDimension(targetLevel, new PositionTeleporter(new BlockPos(WorldUtil.START_POS)));
                 TCRAdvancementData.finishAdvancement(TCRCoreMod.MOD_ID, serverPlayer);
                 serverPlayer.server.getGameRules().getRule(GameRules.RULE_KEEPINVENTORY).set(true, serverPlayer.server);
-                serverPlayer.server.getGameRules().getRule(GameRules.RULE_MOBGRIEFING).set(true, serverPlayer.server);
+                serverPlayer.server.getGameRules().getRule(GameRules.RULE_MOBGRIEFING).set(false, serverPlayer.server);
+                serverPlayer.server.getGameRules().getRule(EpicFightGameRules.SKILL_REPLACE_COOLDOWN.getRuleKey()).set(200, serverPlayer.server);
                 ServerPlayer finalServerPlayer = serverPlayer;
                 ResourceKey<SkillTree> dpr = ResourceKey.create(SkillTree.SKILL_TREE_REGISTRY_KEY, ResourceLocation.fromNamespaceAndPath("dodge_parry_reward", "passive"));
                 serverPlayer.getCapability(SkillTreeProgression.SKILL_TREE_PROGRESSION).ifPresent(skillTreeProgression -> {

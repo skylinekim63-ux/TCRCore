@@ -1,9 +1,12 @@
 package com.p1nero.tcrcore.events;
 
+import com.brass_amber.ba_bt.block.block.BTSpawnerBlock;
+import com.brass_amber.ba_bt.init.BTItems;
 import com.github.L_Ender.cataclysm.init.ModBlocks;
 import com.p1nero.cataclysm_dimension.worldgen.CataclysmDimensions;
 import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.save_data.TCRDimSaveData;
+import com.p1nero.tcrcore.utils.ItemUtil;
 import com.p1nero.tcrcore.utils.WorldUtil;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
@@ -58,6 +61,20 @@ public class BlockEvents {
                     }
                 }
             }
+
+            //挖刷怪笼直接得钥匙，防止坏掉
+            if(event.getState().getBlock() instanceof BTSpawnerBlock) {
+                if(WorldUtil.isInStructure(serverLevel, event.getPos().getCenter(), WorldUtil.LAND_GOLEM)) {
+                    ItemUtil.addItemEntity(serverLevel, event.getPos(), BTItems.LAND_MONOLITH_KEY.get().getDefaultInstance());
+                }
+                if(WorldUtil.isInStructure(serverLevel, event.getPos().getCenter(), WorldUtil.OCEAN_GOLEM)) {
+                    ItemUtil.addItemEntity(serverLevel, event.getPos(), BTItems.OCEAN_MONOLITH_KEY.get().getDefaultInstance());
+                }
+                if(WorldUtil.isInStructure(serverLevel, event.getPos().getCenter(), WorldUtil.CORE_GOLEM)) {
+                    ItemUtil.addItemEntity(serverLevel, event.getPos(), BTItems.CORE_MONOLITH_KEY.get().getDefaultInstance());
+                }
+            }
+
         }
     }
 

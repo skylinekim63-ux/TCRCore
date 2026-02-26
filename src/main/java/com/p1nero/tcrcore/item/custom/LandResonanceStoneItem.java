@@ -51,21 +51,19 @@ public class LandResonanceStoneItem extends ResonanceStoneItem{
 
                     BlockPos pos = null;
                     try {
-                        pos = WorldUtil.getNearbyStructurePos(serverPlayer, targetStructure.toString(), y);
+                        pos = WorldUtil.getNearbyStructurePosByCommand(serverPlayer, targetStructure.toString(), y);
                     } catch (Exception e) {
                         TCRCoreMod.LOGGER.error("TCRCore : Error finding structure [{}]: {}", targetStructure, e.getMessage());
                         player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", targetStructure).withStyle(ChatFormatting.RED), false);
-                        callback.accept(pos, serverPlayer);
                     }
 
                     BlockPos pos1 = null;
                     try {
                         //以大地高塔为中心搜奇美拉的位置
-                        pos1 = WorldUtil.getNearbyStructurePos(serverPlayer.serverLevel(), pos, WorldUtil.BONE_CHIMERA_STRUCTURE, 130);
+                        pos1 = WorldUtil.getNearbyStructurePosByCommand(serverPlayer.serverLevel(), pos, WorldUtil.BONE_CHIMERA_STRUCTURE, 130);
                     } catch (Exception e) {
                         TCRCoreMod.LOGGER.error("TCRCore : Error finding structure [{}]: {}", WorldUtil.BONE_CHIMERA_STRUCTURE, e.getMessage());
                         player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", WorldUtil.BONE_CHIMERA_STRUCTURE).withStyle(ChatFormatting.RED), false);
-                        callback.accept(pos, serverPlayer);
                     }
                     return Pair.of(pos, pos1);
                 })
@@ -85,11 +83,11 @@ public class LandResonanceStoneItem extends ResonanceStoneItem{
                     } else {
                         player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", WorldUtil.BONE_CHIMERA_STRUCTURE).withStyle(ChatFormatting.RED), false);
                     }
-                    callback.accept(pos, serverPlayer);
-                    TCRQuests.BONE_CHIMERA_QUEST.start(serverPlayer);
                     //保险，俩都找到再消耗
                     if(pos != null && pos1 != null) {
                         itemStack.shrink(1);
+                        callback.accept(pos, serverPlayer);
+                        TCRQuests.BONE_CHIMERA_QUEST.start(serverPlayer);
                     }
                 });
             } else {

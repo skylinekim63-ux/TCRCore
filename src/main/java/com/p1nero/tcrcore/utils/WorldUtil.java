@@ -121,7 +121,6 @@ public class WorldUtil {
         return getNearbyStructurePos(serverPlayer.serverLevel(), serverPlayer.getOnPos(), structureId, y);
     }
 
-
     @Nullable
     public static BlockPos getNearbyStructurePos(ServerLevel serverLevel, BlockPos playerPos, String structureId, int y) {
         ResourceLocation structureResourceLocation = ResourceLocation.tryParse(structureId);
@@ -145,7 +144,7 @@ public class WorldUtil {
                 serverLevel,
                 structureSet,
                 playerPos,
-                500,
+                100,
                 true//跳过已找？
         );
 
@@ -171,6 +170,18 @@ public class WorldUtil {
                 return new Vec2i(Integer.parseInt(xStr), Integer.parseInt(zStr));
             } catch (NumberFormatException ignored) {
             }
+        }
+        return null;
+    }
+
+    public static BlockPos getNearbyStructurePosByCommand(ServerPlayer serverPlayer, String structureId, int y) {
+        return getNearbyStructurePosByCommand(serverPlayer.serverLevel(), serverPlayer.getOnPos(), structureId, y);
+    }
+
+    public static BlockPos getNearbyStructurePosByCommand(ServerLevel serverLevel, BlockPos playerPos, String structureId, int y) {
+        Vec2i posXZ = getNearbyStructurePos(serverLevel, playerPos.getCenter(), structureId);
+        if(posXZ != null) {
+            return new BlockPos(posXZ.x, y, posXZ.y);
         }
         return null;
     }

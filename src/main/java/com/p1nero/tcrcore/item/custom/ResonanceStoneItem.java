@@ -69,11 +69,10 @@ public class ResonanceStoneItem extends Item {
                     serverPlayer.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(EpicSkillsSounds.GAIN_ABILITY_POINTS.get()), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
                     BlockPos pos = null;
                     try {
-                        pos = WorldUtil.getNearbyStructurePos(serverPlayer, targetStructure.toString(), y);
+                        pos = WorldUtil.getNearbyStructurePosByCommand(serverPlayer, targetStructure.toString(), y);
                     } catch (Exception e) {
                         TCRCoreMod.LOGGER.error("TCRCore : Error finding structure [{}]: {}", targetStructure, e.getMessage());
                         player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", targetStructure).withStyle(ChatFormatting.RED), false);
-                        callback.accept(pos, serverPlayer);
                     }
                     return pos;
                 })
@@ -82,11 +81,11 @@ public class ResonanceStoneItem extends Item {
                         TCRPlayer tcrPlayer = TCRCapabilityProvider.getTCRPlayer(player);
                         tcrPlayer.playDirectionParticle(player.getEyePosition(), new Vec3(pos.getX(), player.getEyeY(), pos.getZ()));
                         itemStack.shrink(1);
+                        serverPlayer.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(EpicSkillsSounds.GAIN_ABILITY_POINTS.get()), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
+                        callback.accept(pos, serverPlayer);
                     } else {
                         player.displayClientMessage(TCRCoreMod.getInfo("resonance_search_failed", targetStructure).withStyle(ChatFormatting.RED), false);
                     }
-                    serverPlayer.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(EpicSkillsSounds.GAIN_ABILITY_POINTS.get()), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
-                    callback.accept(pos, serverPlayer);
                 });
             } else {
                 player.displayClientMessage(TCRCoreMod.getInfo("can_not_do_this_too_early"), false);
