@@ -150,6 +150,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "It bears an ancient oracle hinting at the locations of scattered embers. Show it to the The Sanctuary Keeper in the The Sanctuary; it might aid your adventure!");
         this.addItemUsageInfo(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), "§cIn multiplayer mode, do not occupy other players'! Everyone must submit their own!", 2);
 
+        this.addInfo("i18n_pack", "I18n pack, thanks to all translators!");
         this.addInfo("can_not_dodge", "Boss attacks cannot be dodged!");
         this.addInfo("can_not_guard", "Boss attacks cannot be blocked!");
         this.addInfo("pec_weapon_lock", "Weapon skill locked! Defeat [%s] in [%s] to unlock!");

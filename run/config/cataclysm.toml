@@ -156,7 +156,7 @@
 ["Ender Guardian"]
 	#EnderGuardian's Health Multiplier
 	#Range: 0.0 ~ 1000000.0
-	EnderGuardianHealthMultiplier = 1.0
+	EnderGuardianHealthMultiplier = 1.4
 	#EnderGuardian's Damage Multiplier
 	#Range: 0.0 ~ 1000000.0
 	EnderGuardianDamageMultiplier = 1.0
@@ -260,10 +260,10 @@
 [Ignis]
 	#Ignis's Health Multiplier
 	#Range: 0.0 ~ 1000000.0
-	IgnisHealthMultiplier = 2.0
+	IgnisHealthMultiplier = 1.4
 	#Ignis's Damage Multiplier
 	#Range: 0.0 ~ 1000000.0
-	IgnisDamageMultiplier = 1.8
+	IgnisDamageMultiplier = 1.0
 	#Ignis's Healing with out target
 	#Range: 0.0 ~ 1000000.0
 	IgnisNatureHealing = 25.0
@@ -304,7 +304,7 @@
 ["The Harbinger"]
 	#Harbinger's Health Multiplier
 	#Range: 0.0 ~ 1000000.0
-	HarbingerHealthMultiplier = 1.0
+	HarbingerHealthMultiplier = 1.4
 	#Harbinger's Damage Multiplier
 	#Range: 0.0 ~ 1000000.0
 	HarbingerDamageMultiplier = 1.0
@@ -335,10 +335,10 @@
 ["The Leviathan"]
 	#Leviathan's Health Multiplier
 	#Range: 0.0 ~ 1000000.0
-	LeviathanHealthMultiplier = 1.0
+	LeviathanHealthMultiplier = 1.4
 	#Leviathan's Damage Multiplier
 	#Range: 0.0 ~ 1000000.0
-	LeviathanDamageMultiplier = 0.6
+	LeviathanDamageMultiplier = 1.0
 	#Leviathan's Healing with out target
 	#Range: 0.0 ~ 1000000.0
 	LeviathanNatureHealing = 25.0
@@ -403,10 +403,10 @@
 ["Ancient Remnant"]
 	#Ancient Remnant's Health Multiplier
 	#Range: 0.0 ~ 1000000.0
-	AncientRemnantHealthMultiplier = 2.0
+	AncientRemnantHealthMultiplier = 1.4
 	#Ancient Remnant's Damage Multiplier
 	#Range: 0.0 ~ 1000000.0
-	AncientRemnantDamageMultiplier = 1.5
+	AncientRemnantDamageMultiplier = 1.0
 	#AncientRemnant's Healing with out target
 	#Range: 0.0 ~ 1000000.0
 	AncientRemnantNatureHealing = 25.0
@@ -479,10 +479,10 @@
 [Scylla]
 	#Scylla's Health Multiplier
 	#Range: 0.0 ~ 1000000.0
-	ScyllaHealthMultiplier = 1.0
+	ScyllaHealthMultiplier = 1.4
 	#Scylla's Damage Multiplier
 	#Range: 0.0 ~ 1000000.0
-	ScyllaDamageMultiplier = 0.7
+	ScyllaDamageMultiplier = 1.4
 	#Scylla's Immune to Long distance attack range.
 	#Range: 1.0 ~ 1000000.0
 	"Scylla's prevent attacks from far away Range" = 10.0
@@ -644,13 +644,13 @@
 
 ["Boss Respawner"]
 	#on/off
-	MonstrosityRespawner = true
+	MonstrosityRespawner = false
 	#on/off
-	EnderGuardianRespawner = true
+	EnderGuardianRespawner = false
 	#on/off
-	HarbingerRespawner = true
+	HarbingerRespawner = false
 	#on/off
-	RemnantRespawner = true
+	RemnantRespawner = false
 	#on/off
-	ScyllaRespawner = true
+	ScyllaRespawner = false
 

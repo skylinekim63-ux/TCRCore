@@ -413,10 +413,9 @@ public class LivingEntityEventListeners {
             //打似最终boss处理通关
             if (livingEntity instanceof TCRMimic) {
                 serverLevel.players().forEach(serverPlayer -> {
-                    if(TCRQuests.KILL_MAD_CHRONOS.finish(serverPlayer, true)) {
-                        PlayerDataManager.gameCleared.put(serverPlayer, true);
+                    if(TCRQuestManager.hasQuest(serverPlayer, TCRQuests.KILL_MAD_CHRONOS)) {
+                        TCRCapabilityProvider.getTCRPlayer(serverPlayer).setTickAfterBossDieLeft(600);
                     }
-                    TCRCapabilityProvider.getTCRPlayer(serverPlayer).setTickAfterBossDieLeft(600);
                 });
             }
 

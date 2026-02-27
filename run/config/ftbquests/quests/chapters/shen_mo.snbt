@@ -6,7 +6,7 @@
 	hide_quest_until_deps_visible: true
 	icon: "cataclysm:altar_of_fire"
 	id: "0CE9782910610D72"
-	order_index: 3
+	order_index: 4
 	quest_links: [ ]
 	quests: [
 		{
@@ -58,8 +58,8 @@
 				value: 1L
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest8058086817761900554.title}"
-			x: -16.0d
-			y: -8.0d
+			x: -11.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -79,8 +79,8 @@
 				value: 1L
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest5047085965933135713.title}"
-			x: -22.0d
-			y: -6.0d
+			x: -13.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -100,8 +100,8 @@
 				value: 1L
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest6378650516386893855.title}"
-			x: 22.0d
-			y: -6.0d
+			x: 14.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -121,8 +121,8 @@
 				value: 1L
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest4272713576519895019.title}"
-			x: 16.0d
-			y: -8.0d
+			x: 12.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -143,7 +143,7 @@
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest867631697875350248.title}"
 			x: 4.0d
-			y: -12.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -164,7 +164,7 @@
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest4384074260055690428.title}"
 			x: -4.0d
-			y: -12.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -190,8 +190,8 @@
 				value: 1L
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest5978165804115493060.title}"
-			x: 10.0d
-			y: -10.0d
+			x: 9.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -211,8 +211,8 @@
 				value: 1L
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest7353088665843595306.title}"
-			x: -10.0d
-			y: -10.0d
+			x: -8.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -235,8 +235,8 @@
 				value: 1L
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest3774287354747791257.title}"
-			x: -2.25d
-			y: 9.0d
+			x: -2.0d
+			y: 7.017857142857139d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -258,8 +258,8 @@
 				value: 1L
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest3166583718448422961.title}"
-			x: 2.25d
-			y: 9.0d
+			x: 2.5d
+			y: 7.017857142857139d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -364,8 +364,8 @@
 				value: 1L
 			}]
 			title: "{ftbquests.chapter.shen_mo.quest8501765718863884973.title}"
-			x: 2.25d
-			y: 18.0d
+			x: 2.5d
+			y: 10.160714285714278d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -409,8 +409,8 @@
 				value: 1L
 			}]
 			title: "下界铁掌"
-			x: 0.0d
-			y: 13.0d
+			x: 0.2857142857142918d
+			y: 8.446428571428577d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]
@@ -431,8 +431,8 @@
 				value: 1L
 			}]
 			title: "黑曜石柱"
-			x: -2.25d
-			y: 18.0d
+			x: -2.0d
+			y: 10.160714285714278d
 		}
 		{
 			dependencies: ["68EDC89BB022788B"]

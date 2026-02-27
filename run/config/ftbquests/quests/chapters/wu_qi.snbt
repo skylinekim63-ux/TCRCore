@@ -6,7 +6,7 @@
 	hide_quest_until_deps_visible: true
 	icon: "cataclysm:ceraunus"
 	id: "2D391C2F48D42ABA"
-	order_index: 1
+	order_index: 2
 	quest_links: [ ]
 	quests: [
 		{

@@ -38,6 +38,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.shelmarow.combat_evolution.execution.ExecutionHandler;
 import org.jetbrains.annotations.NotNull;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 
 public class FakeSkyGolem extends FakeNPCEntity {
 
@@ -148,6 +150,9 @@ public class FakeSkyGolem extends FakeNPCEntity {
             TCRQuests.TALK_TO_SKY_GOLEM.finish(player);
             canBeHurt = true;
             PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new SetThirdPersonPacket(), player);
+            EpicFightCapabilities.getUnparameterizedEntityPatch(player, PlayerPatch.class).ifPresent(playerPatch -> {
+                playerPatch.toEpicFightMode(true);
+            });
             ItemUtil.addItemEntity(player, ModItems.STORM_EYE.get(), 1, ChatFormatting.AQUA.getColor().intValue());
             player.connection.send(new ClientboundSoundPacket(BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, player.getRandom().nextInt()));
             if(!ExecutionHandler.isHoldingWeapon(player)) {

@@ -12,10 +12,10 @@
 	}
 	id: "721BC8BD525EA3BB"
 	images: [{
-		height: 9.0d
+		height: 18.0d
 		image: "tcrcore:textures/ftb/preface_bg.png"
 		rotation: 0.0d
-		width: 16.0d
+		width: 32.0d
 		x: 0.0d
 		y: -1.5d
 	}]
@@ -60,7 +60,7 @@
 				""
 				"&b宣传片协助拍摄：Arcadia"
 				""
-				"&b赞助商：Apex Hosting&r"
+				""
 				""
 				"&a鸣谢："
 				"&a所有参与内测的朋友们"
@@ -76,6 +76,7 @@
 				type: "xp"
 				xp: 1
 			}]
+			size: 2.0d
 			subtitle: "{ftbquests.chapter.xu_zhang.quest711034741643803066.subtitle}"
 			tasks: [{
 				id: "7A35FB5FAB5EC5CC"
@@ -83,8 +84,8 @@
 				type: "checkmark"
 			}]
 			title: "{ftbquests.chapter.xu_zhang.quest711034741643803066.title}"
-			x: 2.0d
-			y: 0.0d
+			x: 3.857142857142861d
+			y: 1.6428571428571388d
 		}
 		{
 			description: [
@@ -109,14 +110,15 @@
 				xp: 1
 			}]
 			shape: "rsquare"
+			size: 2.0d
 			subtitle: "{ftbquests.chapter.xu_zhang.quest7487272814909384521.subtitle}"
 			tasks: [{
 				id: "5293E10F1D65A447"
 				title: "{ftbquests.chapter.xu_zhang.quest7487272814909384521.task.5950346987720516679.title}"
 				type: "checkmark"
 			}]
-			x: -2.5d
-			y: -3.0d
+			x: -4.5d
+			y: -5.0d
 		}
 	]
 	title: "{ftbquests.chapter.xu_zhang.title}"

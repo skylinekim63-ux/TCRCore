@@ -1,0 +1,1 @@
+see ["src/generated/assets/tcrcore/lang"](https://github.com/P1neapplell0/TCRCore/tree/master/src/generated/resources/assets/tcrcore/lang)
