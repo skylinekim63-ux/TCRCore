@@ -18,6 +18,7 @@ import java.util.Objects;
 public class CustomDialogHandler {
 
     public static final int ON_START_SCREEN = 1;
+    public static final int ON_RESET_GAME_PROGRESS = 2;
 
     @SubscribeEvent
     public static void onLivingDialog(ServerNpcEntityInteractEvent event) {
@@ -32,6 +33,9 @@ public class CustomDialogHandler {
             ServerPlayer serverPlayer = event.getServerPlayer();
             if(event.getInteractId() == ON_START_SCREEN) {
                 PacketRelay.sendToPlayer(TCRPacketHandler.INSTANCE, new PlayTitlePacket(PlayTitlePacket.OPEN_BACKPACK_TUTORIAL), serverPlayer);
+            }
+            if(event.getInteractId() == ON_RESET_GAME_PROGRESS) {
+
             }
         }
     }

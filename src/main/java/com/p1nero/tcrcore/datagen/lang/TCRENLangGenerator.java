@@ -8,6 +8,7 @@ import com.p1nero.tcrcore.TCRCoreMod;
 import com.p1nero.tcrcore.block.TCRBlocks;
 import com.p1nero.tcrcore.client.TCRKeyMappings;
 import com.p1nero.tcrcore.dialog.custom.handler.no_entity.FirstEnterCloudlandScreenHandler;
+import com.p1nero.tcrcore.dialog.custom.handler.no_entity.ResetGameProgressScreenHandler;
 import com.p1nero.tcrcore.dialog.custom.handler.no_entity.StartScreenHandler;
 import com.p1nero.tcrcore.effect.TCREffects;
 import com.p1nero.tcrcore.entity.TCREntities;
@@ -88,6 +89,7 @@ public class TCRENLangGenerator extends TCRLangProvider {
 
         StartScreenHandler.onGenerateEN(this);
         FirstEnterCloudlandScreenHandler.onGenerateEN(this);
+        ResetGameProgressScreenHandler.onGenerateEN(this);
 
         this.add("item.domesticationinnovation.collar_tag.tcr_info", "It allows for special enchantments to be applied to pets.");
         this.addTCRItemInfo(net.blay09.mods.waystones.item.ModItems.warpStone, "Click the §6[Scroll]§r button in the inventory to teleport to activated waystones!");
@@ -112,6 +114,8 @@ public class TCRENLangGenerator extends TCRLangProvider {
         this.addSkill("fire_avoid", "Fire Avoidance Charm", "Immunity to fire damage!");
         this.addSkill("perfect_dodge", "Dodge Effect", "Play a cool animation when perfect dodge!");
 
+        this.add(TCRItems.STONE_OF_REINCARNATION.get(), "轮回之石");
+        this.addItemUsageInfo(TCRItems.STONE_OF_REINCARNATION.get(), "");
         this.add(TCRItems.WITHER_SOUL_STONE.get(), "Wither Soul Stone");
         this.addItemUsageInfo(TCRItems.WITHER_SOUL_STONE.get(), "It seems to have lost its magic for now, just a unique stone. Figure out how to reawaken it!");
         this.add(TCRItems.WITHER_SOUL_STONE_ACTIVATED.get(), "Wither Soul Stone");

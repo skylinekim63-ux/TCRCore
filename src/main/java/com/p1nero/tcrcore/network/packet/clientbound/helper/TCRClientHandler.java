@@ -4,6 +4,7 @@ import com.p1nero.fast_tpa.network.PacketRelay;
 import com.p1nero.tcrcore.capability.PlayerDataManager;
 import com.p1nero.tcrcore.capability.TCRCapabilityProvider;
 import com.p1nero.tcrcore.dialog.custom.handler.no_entity.FirstEnterCloudlandScreenHandler;
+import com.p1nero.tcrcore.dialog.custom.handler.no_entity.ResetGameProgressScreenHandler;
 import com.p1nero.tcrcore.dialog.custom.handler.no_entity.StartScreenHandler;
 import com.p1nero.tcrcore.client.gui.screen.TCREndScreen;
 import com.p1nero.tcrcore.client.gui.screen.TCRQuestScreen;
@@ -81,6 +82,12 @@ public class TCRClientHandler {
     public static void openFirstEnterCloudlandScreen(){
         if(Minecraft.getInstance().player != null) {
             FirstEnterCloudlandScreenHandler.addScreen();
+        }
+    }
+
+    public static void openResetGameScreen(){
+        if(Minecraft.getInstance().player != null) {
+            ResetGameProgressScreenHandler.addScreen();
         }
     }
 

@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 public record OpenCustomDialogPacket(int id) implements BasePacket {
     public static final int GAME_START = 0;
     public static final int FIRST_ENTER_CLOUDLAND = 1;
+    public static final int RESET_GAME = 2;
     @Override
     public void encode(FriendlyByteBuf buf) {
         buf.writeInt(id);
@@ -24,6 +25,7 @@ public record OpenCustomDialogPacket(int id) implements BasePacket {
             switch (id) {
                 case GAME_START -> DistHelper.runClient(() -> TCRClientHandler::openStartScreen);
                 case FIRST_ENTER_CLOUDLAND -> DistHelper.runClient(() -> TCRClientHandler::openFirstEnterCloudlandScreen);
+                case RESET_GAME -> DistHelper.runClient(() -> TCRClientHandler::openResetGameScreen);
             }
 
         }

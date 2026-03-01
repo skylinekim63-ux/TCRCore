@@ -231,7 +231,7 @@ dependencies {
     implementation fg.deobf("curse.maven:sword-soaring-1011068:7305158")
     implementation fg.deobf("curse.maven:epic-fight-dodge-parry-reward-1304607:7685159")
     implementation fg.deobf("curse.maven:epic-fight-avalon-1268823:7619938")
-    implementation fg.deobf("curse.maven:p1neros-dialogue-lib-1274526:7676495")
+    implementation fg.deobf("curse.maven:p1neros-dialogue-lib-1274526:7695342")
     implementation fg.deobf("curse.maven:entity-respawner-1363764:7105518")
 
     implementation fg.deobf("libs:EpicFight-Nightfall:3.0.5")
