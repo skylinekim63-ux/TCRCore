@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "tcrcore:cataclysm_humanoid_boss_drop"
+    },
+    {
+      "tag": "tcrcore:cataclysm_humanoid_boss_drop"
+    },
+    {
+      "tag": "tcrcore:cataclysm_humanoid_boss_drop"
+    },
+    {
+      "tag": "tcrcore:cataclysm_humanoid_boss_drop"
+    }
+  ],
+  "result": {
+    "item": "tcrcore:ancient_oracle_fragment"
+  }
+}
