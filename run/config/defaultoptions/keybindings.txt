@@ -213,7 +213,7 @@ key_quark.keybind.narrator_readout:key.keyboard.unknown:NONE
 key_quark.keybind.narrator_full_readout:key.keyboard.unknown:NONE
 key_quark.keybind.variant_selector:key.keyboard.unknown:NONE
 key_key.parcool.Enable:key.keyboard.unknown:NONE
-key_key.parcool.Crawl:key.keyboard.c:NONE
+key_key.parcool.Crawl:key.keyboard.unknown
 key_key.parcool.ClingToCliff:key.mouse.right:NONE
 key_key.parcool.Breakfall:key.keyboard.r:NONE
 key_key.parcool.FastRun:key.keyboard.left.control:NONE
@@ -223,7 +223,7 @@ key_key.parcool.WallSlide:key.mouse.right:NONE
 key_key.parcool.WallJump:key.keyboard.space:NONE
 key_key.parcool.Vault:key.mouse.right:NONE
 key_key.parcool.HorizontalWallRun:key.keyboard.r:NONE
-key_key.parcool.HideInBlock:key.keyboard.c:NONE
+key_key.parcool.HideInBlock:key.keyboard.unknown
 key_key.parcool.openSetting:key.keyboard.unknown:NONE
 key_key.parcool.QuickTurn:key.keyboard.unknown:NONE
 key_key.parcool.Flipping:key.keyboard.unknown:NONE

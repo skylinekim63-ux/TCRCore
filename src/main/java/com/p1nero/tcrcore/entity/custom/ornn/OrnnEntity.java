@@ -311,6 +311,9 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
         ItemStack skillBook = new ItemStack(EpicFightItems.SKILLBOOK.get());
         SkillBookItem.setContainingSkill(EFNSkills.ZANSETSU, skillBook);
 
+        ItemStack skillBook2 = new ItemStack(EpicFightItems.SKILLBOOK.get());
+        SkillBookItem.setContainingSkill(EFNSkills.MORTAL_BLADE, skillBook2);
+
         offers.add(new MerchantOffer(
                 new ItemStack(TCRItems.FLAME_FRAGMENT.get(), 1),
                 new ItemStack(TCRItems.NETHERITE_FRAGMENT.get(), 1),
@@ -337,6 +340,10 @@ public class OrnnEntity extends PathfinderMob implements IEntityNpc, GeoEntity, 
         offers.add(new MerchantOffer(
                 new ItemStack(TCRItems.ANCIENT_ORACLE_FRAGMENT.get(), 1),
                 skillBook,
+                142857, 0, 0.01f));
+        offers.add(new MerchantOffer(
+                new ItemStack(TCRItems.RARE_ARTIFACT_TICKET.get(), 1),
+                skillBook2,
                 142857, 0, 0.01f));
     }
 

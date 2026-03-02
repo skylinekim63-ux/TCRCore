@@ -233,7 +233,7 @@
 					"behaviors": [	
 						{
 							"conditions": [
-								{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
+								{"predicate": "epicfight:health", "health":0.8, "comparator": "greater_ratio"},{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
 							],
 							"animation": "efn:biped/perfect_dodge", 
 							"set_phase": 1,
@@ -546,7 +546,7 @@
 					"behaviors": [	
 						{
 							"conditions": [
-								{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
+								{"predicate": "epicfight:health", "health":0.8, "comparator": "greater_ratio"},{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
 							],
 							"animation": "efn:biped/perfect_dodge", 
 							"set_phase": 1,
@@ -859,7 +859,7 @@
 					"behaviors": [	
 						{
 							"conditions": [
-								{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
+								{"predicate": "epicfight:health", "health":0.8, "comparator": "greater_ratio"},{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
 							],
 							"animation": "efn:biped/perfect_dodge", 
 							"set_phase": 1,
@@ -1172,7 +1172,7 @@
 					"behaviors": [	
 						{
 							"conditions": [
-								{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
+								{"predicate": "epicfight:health", "health":0.8, "comparator": "greater_ratio"},{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
 							],
 							"animation": "efn:biped/perfect_dodge", 
 							"set_phase": 1,
@@ -1485,7 +1485,7 @@
 					"behaviors": [	
 						{
 							"conditions": [
-								{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
+								{"predicate": "epicfight:health", "health":0.8, "comparator": "greater_ratio"},{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
 							],
 							"animation": "efn:biped/perfect_dodge", 
 							"set_phase": 1,
@@ -1773,7 +1773,7 @@
 					"behaviors": [	
 						{
 							"conditions": [
-								{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
+								{"predicate": "epicfight:health", "health":0.8, "comparator": "greater_ratio"},{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
 							],
 							"animation": "efn:biped/perfect_dodge", 
 							"set_phase": 1,
@@ -2122,7 +2122,7 @@
 					"behaviors": [	
 						{
 							"conditions": [
-								{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
+								{"predicate": "epicfight:health", "health":0.8, "comparator": "greater_ratio"},{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
 							],
 							"animation": "efn:biped/perfect_dodge", 
 							"set_phase": 1,
@@ -2425,7 +2425,7 @@
 					"behaviors": [	
 						{
 							"conditions": [
-								{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
+								{"predicate": "epicfight:health", "health":0.8, "comparator": "greater_ratio"},{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
 							],
 							"animation": "efn:biped/perfect_dodge", 
 							"set_phase": 1,
@@ -3187,7 +3187,7 @@
 					"behaviors": [	
 						{
 							"conditions": [
-								{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
+								{"predicate": "epicfight:health", "health":0.8, "comparator": "greater_ratio"},{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
 							],
 							"animation": "efn:biped/perfect_dodge", 
 							"set_phase": 1,
@@ -3441,7 +3441,7 @@
 					"behaviors": [	
 						{
 							"conditions": [
-								{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
+								{"predicate": "epicfight:health", "health":0.8, "comparator": "greater_ratio"},{"predicate":"indestructible:phase", "min": 10, "max": 10},{"predicate": "indestructible:stamina", "stamina": 0.11, "comparator": "greater_ratio"},   {"predicate":"epicfight:within_distance", "min": 0.0, "max": 32.0}
 							],
 							"animation": "efn:biped/perfect_dodge", 
 							"set_phase": 1,

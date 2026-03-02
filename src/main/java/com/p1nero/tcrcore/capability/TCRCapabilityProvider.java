@@ -101,13 +101,15 @@ public class TCRCapabilityProvider implements ICapabilityProvider, INBTSerializa
     }
 
     /**
-     * 返回轮回次数
+     * 返回轮回次数，保持血量不变
      */
     public static int clearPlayerData(ServerPlayer serverPlayer) {
         TCRPlayer tcrPlayer = getTCRPlayer(serverPlayer);
         int newSardine = tcrPlayer.getSardine() + 1;
+        double healthAdder = tcrPlayer.getHealthAdder();
         tcrPlayer.clear();
         tcrPlayer.setSardine(newSardine);
+        tcrPlayer.setHealthAdder(healthAdder);
         syncPlayerDataToClient(serverPlayer);
         return newSardine;
     }

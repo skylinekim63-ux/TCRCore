@@ -113,6 +113,14 @@ public class TCRPlayer {
         }
     }
 
+    public double getHealthAdder() {
+        return healthAdder;
+    }
+
+    public void setHealthAdder(double healthAdder) {
+        this.healthAdder = healthAdder;
+    }
+
     public void setTickAfterBless(int tickAfterBless) {
         this.tickAfterBless = tickAfterBless;
     }
