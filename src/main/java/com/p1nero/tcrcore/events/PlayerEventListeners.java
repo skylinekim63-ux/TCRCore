@@ -340,20 +340,22 @@ public class PlayerEventListeners {
     public static void onPlayerTryToEnterDim(EntityTravelToDimensionEvent event) {
 
         if (event.getEntity() instanceof ServerPlayer serverPlayer) {
-            //允许创造进
-            if (!serverPlayer.isCreative()) {
+            //允许创造和旁观进
+            if (!serverPlayer.isCreative() || !serverPlayer.isSpectator()) {
 
                 if (event.getDimension() == PBF1Dimensions.SANCTUM_OF_THE_BATTLE_LEVEL_KEY) {
                     ServerLevel targetLevel = serverPlayer.server.getLevel(PBF1Dimensions.SANCTUM_OF_THE_BATTLE_LEVEL_KEY);
-                    if (targetLevel != null && !targetLevel.players().isEmpty()) {
+                    if (targetLevel != null) {
+                        boolean hasNonCreativeOrSpectator = targetLevel.players().stream()
+                                .anyMatch(p -> !p.isCreative() && !p.isSpectator());
+                        if (hasNonCreativeOrSpectator) {
                         event.setCanceled(true);
                         serverPlayer.displayClientMessage(TCRCoreMod.getInfo("dim_max_players"), true);
                     }
                 }
 
                 if (event.getDimension() == TCRDimensions.REAL_LEVEL_KEY) {
-                    //卡在中间，只有击败最终boss才能进，后日谈完成后也不能进
-                    if (TCRQuests.TALK_TO_AINE_GAME_CLEAR.isFinished(serverPlayer) || !TCRQuests.KILL_MAD_CHRONOS.isFinished(serverPlayer)) {
+                    if (!(TCRQuests.TALK_TO_AINE_GAME_CLEAR.isFinished(serverPlayer) || TCRQuestManager.hasQuest(serverPlayer, TCRQuests.TALK_TO_AINE_GAME_CLEAR))) {
                         event.setCanceled(true);
                         serverPlayer.displayClientMessage(TCRCoreMod.getInfo("can_not_do_this_too_early"), true);
                     }
@@ -381,7 +383,11 @@ public class PlayerEventListeners {
 
                 if (CataclysmDimensions.LEVELS.contains(event.getDimension())) {
                     ServerLevel targetLevel = serverPlayer.server.getLevel(event.getDimension());
-                    if (targetLevel != null && targetLevel.players().size() >= 4) {
+                    if (targetLevel != null) {
+                        long realPlayerCount = targetLevel.players().stream()
+                                .filter(p -> !p.isCreative() && !p.isSpectator())
+                                .count();
+                        if (realPlayerCount >= 4) {
                         event.setCanceled(true);
                         serverPlayer.displayClientMessage(TCRCoreMod.getInfo("dim_max_players"), false);
                     }
