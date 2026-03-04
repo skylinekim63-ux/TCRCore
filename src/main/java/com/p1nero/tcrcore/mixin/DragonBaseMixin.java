@@ -48,18 +48,18 @@ public abstract class DragonBaseMixin extends TamableAnimal implements GeoEntity
     @Inject(method = "mobInteract", at = @At("TAIL"))
     private void tcr$mobInteract(Player pPlayer, InteractionHand pHand, CallbackInfoReturnable<InteractionResult> cir) {
         ItemStack mainHand = pPlayer.getMainHandItem();
-        if(!pPlayer.level().isClientSide && mainHand.is(TCRItems.DIVINE_FRAGMENT.get())) {
+        if (!pPlayer.level().isClientSide && mainHand.is(TCRItems.DIVINE_FRAGMENT.get())) {
             this.setGrowthProgress(this.getGrowthProgress() + 6000);
-            if(!pPlayer.isCreative()) {
+            if (!pPlayer.isCreative()) {
                 mainHand.shrink(1);
             }
         }
         FoodProperties foodProperties = mainHand.getItem().getFoodProperties(mainHand, pPlayer);
-        if(pPlayer instanceof ServerPlayer serverPlayer && foodProperties != null) {
+        if (pPlayer instanceof ServerPlayer serverPlayer && foodProperties != null) {
             this.setGrowthProgress(this.getGrowthProgress() + foodProperties.getNutrition() * 200);
             EntityUtil.playLocalSound(serverPlayer, SoundEvents.GENERIC_EAT);
-            this.getNeedsSystem().setFoodLevel(0);
-            if(!pPlayer.isCreative()) {
+            this.getNeedsSystem().setFoodLevel(DragonNeedsSystem.getMaxHunger() / 2);
+            if (!pPlayer.isCreative()) {
                 mainHand.shrink(1);
             }
         }
@@ -70,9 +70,9 @@ public abstract class DragonBaseMixin extends TamableAnimal implements GeoEntity
      */
     @Inject(method = "setGrowthStage", at = @At("HEAD"), remap = false)
     private void tcr$setGrowthStage(int stage, CallbackInfo ci) {
-        if(stage >= 2) {
-            if(this.getOwner() instanceof ServerPlayer player) {
-                if(!TCRQuests.TAME_DRAGON_BACK_TO_FERRY_GIRL.isFinished(player) && TCRQuestManager.hasQuest(player, TCRQuests.TAME_DRAGON)) {
+        if (stage >= 2) {
+            if (this.getOwner() instanceof ServerPlayer player) {
+                if (!TCRQuests.TAME_DRAGON_BACK_TO_FERRY_GIRL.isFinished(player) && TCRQuestManager.hasQuest(player, TCRQuests.TAME_DRAGON)) {
                     TCRQuests.TAME_DRAGON.finish(player, true);
                     TCRQuests.TAME_DRAGON_BACK_TO_FERRY_GIRL.start(player);
                 }
